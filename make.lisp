@@ -2,7 +2,7 @@
 (require "stdlib" *module-stdlib*)
 
 (mapfile (lambda (pathname)
-           (unless (find ".git" (pathname-directory pathname) :test equal)
+           (unless (find ".git" (pathname-directory pathname) :test 'equal)
              (princln pathname)
              (let ((pathname-html (make-pathname
                                     :type "html"
