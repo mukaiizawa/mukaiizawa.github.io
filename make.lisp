@@ -14,6 +14,5 @@
                  (let ((*standard-output* out))
                    (load pathname))))))
          :extension 'lisp
-         :directory "./root"
          :recursive t)
 
