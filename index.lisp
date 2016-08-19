@@ -25,13 +25,16 @@
                   )
                 (:h1 "ブログ開設しました")
                 ; (:h2 "h2")
-                (:p "comming soon.")))
+                (:p "vimとかLispについて備忘録を書いていく予定です．")))
             (:div ((class "sidemenu"))
-              (:aside
+              (:aside ((class "profile"))
                 (:h1 "プロフィール")
-                (:img ((src "resources/images/profile_picture.png") (alt "photo of mukaiizawa") (width "80px") (height "80px;")))
-                (:p "mukaiizawa")
-                (:p (:span ((class "fa fa-github")) "github")))
+                (:a ((href "#"))
+                  (:img ((src "resources/images/profile_picture.png") (alt "photo of mukaiizawa") (width "80px") (height "80px;"))))
+                (:ul
+                  (:li (:a ((href "#")) (:span ((class "fa fa-male")) "mukaiizawa")))
+                  (:li (:a ((href "https://github.com/mukaiizawa") (target "_blank")) (:span ((class "fa fa-github")) "github")))
+                  (:li (:a ((href "mailto:mukaiizawa@yahoo.co.jp")) (:span ((class "fa fa-envelope-o")) "mukaiizawa@yahoo.co.jp")))))
               (:aside
                 (:h1 "記事一覧")
                 (:ul
