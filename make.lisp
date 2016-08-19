@@ -1,8 +1,11 @@
 
 (require "stdlib" *module-stdlib*)
+(load "module")
 
 (mapfile (lambda (pathname)
-           (unless (find ".git" (pathname-directory pathname) :test 'equal)
+           (unless (and (string= "lisp" (pathname-type pathname))
+                        (or (string= "make" (pathname-name pathname))
+                            (string= "module" (pathname-name pathname))))
              (princln pathname)
              (let ((pathname-html (make-pathname
                                     :type "html"

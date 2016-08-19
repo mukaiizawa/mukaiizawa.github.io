@@ -4,10 +4,18 @@
 (princ
   (DSL->xml
     (:!DOCTYPE "html")
-    (:html
-      (:meta ((charset "utf-8")))
+    (:html ((lang "ja"))
       (:head
-        (:link ((href "css/common.css") (rel "stylesheet"))))
+        (:meta ((charset "utf-8")))
+        (:meta ((name "viewport") (content "width=device-width")))
+        (:link ((href "resources/css/style.css") (rel "stylesheet"))))
       (:body
-        (:a ((href "#")) "comming soon.")))))
+        (title)
+        (:div ((class "box1")) "box1")
+        (:div ((class "box2")) "box2")
+        (:div ((class "boxA"))
+          (:div ((class "box3")) "box3")
+          (:div ((class "box4")) "box4"))
+        (:div ((class "box5")) "box5")
+        ))))
 
