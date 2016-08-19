@@ -5,6 +5,9 @@
 (defmacro to-absolute (str)
   (mkstr "https://mukaiizawa.github.io/" str))
 
+(defmacro link-vim-org ()
+  `(:a ((href "http://www.vim.org/download.php")) "vim.org"))
+
 (defmacro head (title)
   `(list
      (:meta ((charset "utf-8")))

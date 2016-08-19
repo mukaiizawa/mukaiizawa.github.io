@@ -38,6 +38,67 @@
             <h1>
               Linux MintでVimをビルドしてみた
             </h1>
+            <p>
+              今まではWindows環境のGvim（
+              <a href="http://www.vim.org/download.php">
+                vim.org
+              </a>
+              が配布しているインストーラーでインストール）を使用していたんだけど，
+              インストールしたLinuxのVimのクリップボードが使えなかった．
+            </p>
+            <p>
+              先人の教えにしたがって
+            </p>
+            <p>
+              $ vim --version | grep clipboard
+            </p>
+            <p>
+              してみたらやっぱりオプションが無効でした．
+            </p>
+            <p>
+              これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．
+            </p>
+            <h2>
+              実際にビルド
+            </h2>
+            <p>
+              Vimを使う利点として情報がたくさんあるということがよく挙げられますが，今回もすぐに見つかりました．
+            </p>
+            <p>
+              <a href="http://vim-jp.org/docs/build_linux.html">
+                Linuxでのビルド方法
+              </a>
+            </p>
+            <p>
+              が，早速「１．必要なパッケージのインストール」でハマりました．
+            </p>
+            <p>
+              $ sudo apt-get build-dep vim
+              [sudo] password for xxx
+              Reading package lists...
+              Done Building dependency tree
+              Reading state information... Done
+              E: You must put some 'source' URIs in your sources.list
+            </p>
+            <p>
+              数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．
+            </p>
+            <ol>
+              <li>
+                画面右下の盾のマークをクリックしてUpdate Managerを起動
+              </li>
+              <img src="https://mukaiizawa.github.io/resources/images/0819_01.png" alt="Update Managerの写真"/>
+              <li>
+                `Edit' -&gt; `Software source'を起動
+              </li>
+              <img src="https://mukaiizawa.github.io/resources/images/0819_02.png" alt="Update Managerの写真"/>
+              <li>
+                一番下の`Enable source code repositories'をチェックして再起動．
+              </li>
+            </ol>
+            <p>
+              このあとは無事参照先の方法でbuildできました．めでたし．
+            </p>
           </article>
         </div>
         <div class="sidemenu">
