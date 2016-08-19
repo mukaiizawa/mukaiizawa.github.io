@@ -8,8 +8,10 @@
                      :if-does-not-exist :create)
   (let ((*standard-output* out))
     (mkarticle
-      :title "hello"
-      :article (list (:article "comming soon...")
-                     (:article "comming soon...")))))
+      (make-article
+        :title "hello"
+        :article (:article
+                   (:a ((href (to-absolute "articles/2016/0819.html")))
+                     (:h1 "Linux MintでVimをビルドしてみた")))))))
 
 
