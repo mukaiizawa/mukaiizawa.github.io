@@ -67,6 +67,7 @@ body {
 .contents article img {
   width: 70%;
   height: auto;
+  margin-bottom:20px;
 }
 
 /* }}} */
