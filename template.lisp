@@ -50,7 +50,7 @@
            (:div ((class "wrapper"))
              (:header
                (:h1
-                 (:a ((href "#")) "GoTo Great")
+                 (:a ((href (to-absolute "index.html"))) "GoTo Great")
                  (:p "偉大なエンジニアを目指して")))
              (:div ((class "center-box"))
                (:div ((class "contents"))
