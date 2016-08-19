@@ -64,6 +64,11 @@ body {
   margin-bottom: 20px;
 }
 
+.contents article img {
+  width: 70%;
+  height: auto;
+}
+
 /* }}} */
 /* .sidemenu aside {{{ */
 
