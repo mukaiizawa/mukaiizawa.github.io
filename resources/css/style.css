@@ -1,7 +1,24 @@
-@charset "UTF-8"
+@charset "UTF-8";
 
 body {
+  background-color: #f0f0f0;
   font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+
+/* .wrapper {{{ */
+
+.wrapper div {
+  margin-top: 0;
+  margin-bottom: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+/* }}} */
+/* .title {{{ */
+
+.title {
+  margin-bottom: 20px;
 }
 
 .title h1 a {
@@ -11,13 +28,29 @@ body {
 
 .title h1 {
   margin: 0;
-  font-size: 30px
+  font-size: 36px
 }
 
 .title p {
   margin: 0;
   font-size: 12px;
 }
+
+/* }}} */
+/* .content {{{ */
+
+.content article h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.content article p {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* }}} */
 
 @media (min-width: 768px) {
 
