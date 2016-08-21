@@ -8,7 +8,13 @@
 (defmacro link-vim-org ()
   `(:a ((href "http://www.vim.org/download.php")) "vim.org"))
 
-(defmacro head (title)
+(defmacro default-page-header ()
+  `(:header
+     (:h1
+       (:a ((href (to-absolute "index.html"))) "GoTo Great")
+       (:p "偉大なエンジニアを目指して"))))
+
+(defmacro default-head (title)
   `(list
      (:meta ((charset "utf-8")))
      (:meta ((name "viewport") (content "width=device-width")))
@@ -45,13 +51,10 @@
      (DSL->xml
        (:!DOCTYPE "html")
        (:html ((lang "ja"))
-         (:head (head (article-title ,article)))
+         (:head (default-head (article-title ,article)))
          (:body
            (:div ((class "wrapper"))
-             (:header
-               (:h1
-                 (:a ((href (to-absolute "index.html"))) "GoTo Great")
-                 (:p "偉大なエンジニアを目指して")))
+             (default-page-header)
              (:div ((class "center-box"))
                (:div ((class "contents"))
                  (:article
