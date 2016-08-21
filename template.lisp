@@ -94,7 +94,7 @@
              (:div ((class "center-box"))
                (:div ((class "contents"))
                  (:article
-                   (default-article-header ,(article-time article) ,(article-tags article))
+                   (default-article-header (article-time ,article) (article-tags ,article))
                    (article-article ,article)))
                (:div ((class "sidemenu"))
                  (article-profile ,article)
