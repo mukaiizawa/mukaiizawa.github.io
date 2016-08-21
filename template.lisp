@@ -38,6 +38,10 @@
      (:ul
        (:li (:a ((href (to-absolute "articles/2016/0819.html"))) "Linux MintでVimをビルドしてみた")))))
 
+(defmacro default-page-footer ()
+  `(:footer ((class "page"))
+               (:p "Copyright © mukaiizawa")))
+
 (defstruct article
   (title "Goto Great")
   (article "comming soon...")
@@ -67,6 +71,5 @@
                (:div ((class "sidemenu"))
                  (article-profile ,article)
                  (article-sidemenu ,article)))
-             (:footer ((class "page"))
-               (:p "Copyright © mukaiizawa"))))))))
+             (default-page-footer)))))))
 
