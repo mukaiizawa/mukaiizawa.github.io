@@ -59,7 +59,7 @@ body {
   font-weight: bold;
 }
 
-.contents article h1 a {
+.contents article a h1 {
   text-decoration: none;
 }
 
