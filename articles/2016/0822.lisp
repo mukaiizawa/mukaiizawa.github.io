@@ -33,7 +33,7 @@
     (:p
       "box 1 { float:left; height:auto; width:50%; }" (:br)
       "box 2 { float:left; height:auto; width:50%; }")
-    (:p"で，２つのboxのwidthの和がwapperをちょうど占領するイメージだったがそうは行かなかった．")
+    (:p"で，２つのboxのwidthの和がwrapperをちょうど占領するイメージだったがそうは行かなかった．")
     (:h2 "原因と解決策")
     (:p "どうやらborderやpaddingを指定していると，領域の計算時にそれらの幅はデフォルトでは含まれないらしい．")
     (:p "つまり，上の例だと領域を計算後にborder 3pxの幅が必要になってしまっている．")
