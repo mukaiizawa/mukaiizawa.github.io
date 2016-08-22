@@ -13,6 +13,10 @@
           (:div ((class "center-box"))
             (:div ((class "contents"))
               (:article
+                (default-article-header "2016-08-22" '("html"))
+                (:a ((href (to-absolute "articles/2016/0822.html")))
+                  (:h1 "cssで段組実装時に２段になってしまう")))
+              (:article
                 (default-article-header "2016-08-19" '("Linux" "Vim"))
                 (:a ((href (to-absolute "articles/2016/0819.html")))
                   (:h1 "Linux MintでVimをビルドしてみた"))))

@@ -59,6 +59,10 @@ body {
   font-weight: bold;
 }
 
+.contents article h1 a {
+  text-decoration: none;
+}
+
 .contents article p {
   margin-top: 0;
   margin-bottom: 20px;
