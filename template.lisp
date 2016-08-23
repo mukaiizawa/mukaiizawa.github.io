@@ -91,7 +91,7 @@
          (:body
            (:div ((class "wrapper"))
              (default-page-header)
-             (:div ((class "center-box"))
+             (:div ((class "inline"))
                (:div ((class "contents"))
                  (:article
                    (default-article-header (article-time ,article) (article-tags ,article))

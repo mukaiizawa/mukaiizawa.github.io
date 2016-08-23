@@ -1,160 +1,160 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <link href="https://mukaiizawa.github.io/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/>
-    <link href="https://mukaiizawa.github.io/resources/css/style.css" rel="stylesheet"/>
-    <title>
-      Linux MintでVimをビルドしてみた
-    </title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>
-          <a href="https://mukaiizawa.github.io/index.html">
-            GoTo Great
-          </a>
-          <p>
-            偉大なエンジニアを目指して
-          </p>
-        </h1>
-      </header>
-      <div class="center-box">
-        <div class="contents">
-          <article>
-            <header>
-              <span class="fa fa-clock-o">
-              </span>
-              <time datetime="2016-08-19">
-                2016-08-19
-              </time>
-              <span class="fa fa-tag">
-                Linux
-              </span>
-              <span class="fa fa-tag">
-                Vim
-              </span>
-            </header>
-            <h1>
-              Linux MintでVimをビルドしてみた
-            </h1>
-            <p>
-              今まではWindows環境のGvim（
-              <a href="http://www.vim.org/download.php">
-                vim.org
-              </a>
-              が配布しているインストーラーでインストール）を使用していたんだけど，
-              インストールしたLinuxのVimのクリップボードが使えなかった．
-            </p>
-            <p>
-              先人の教えにしたがって
-            </p>
-            <p>
-              $ vim --version | grep clipboard
-            </p>
-            <p>
-              してみたらやっぱりオプションが無効でした．
-            </p>
-            <p>
-              これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．
-            </p>
-            <h2>
-              実際にビルド
-            </h2>
-            <p>
-              Vimを使う利点として情報がたくさんあるということがよく挙げられますが，今回もすぐに見つかりました．
-            </p>
-            <p>
-              <a href="http://vim-jp.org/docs/build_linux.html">
-                Linuxでのビルド方法
-              </a>
-            </p>
-            <p>
-              が，早速「１．必要なパッケージのインストール」でハマりました．
-            </p>
-            <p>
-              $ sudo apt-get build-dep vim
-              [sudo] password for xxx
-              Reading package lists...
-              Done Building dependency tree
-              Reading state information... Done
-              E: You must put some 'source' URIs in your sources.list
-            </p>
-            <p>
-              数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．
-            </p>
-            <ol>
-              <li>
-                画面右下の盾のマークをクリックしてUpdate Managerを起動
-              </li>
-              <img src="https://mukaiizawa.github.io/resources/images/0819_01.png" alt="Update Managerの写真"/>
-              <li>
-                `Edit' -&gt; `Software source'を起動
-              </li>
-              <img src="https://mukaiizawa.github.io/resources/images/0819_02.png" alt="Update Managerの写真"/>
-              <li>
-                一番下の`Enable source code repositories'をチェックして再起動．
-              </li>
-            </ol>
-            <p>
-              このあとは無事参照先の方法でbuildできました．めでたし．
-            </p>
-          </article>
-        </div>
-        <div class="sidemenu">
-          <aside class="profile">
-            <h1>
-              プロフィール
-            </h1>
-            <a href="https://mukaiizawa.github.io/profile.html">
-              <img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/>
-            </a>
-            <ul>
-              <li>
-                <a href="#">
-                  <span class="fa fa-male">
-                    mukaiizawa
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/mukaiizawa" target="_blank">
-                  <span class="fa fa-github">
-                    github
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a href="mailto:mukaiizawa@yahoo.co.jp">
-                  <span class="fa fa-envelope-o">
-                    mukaiizawa@yahoo.co.jp
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </aside>
-          <aside>
-            <h1>
-              最新記事
-            </h1>
-            <ul>
-              <li>
-                <a href="https://mukaiizawa.github.io/articles/2016/0819.html">
-                  Linux MintでVimをビルドしてみた
-                </a>
-              </li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-      <footer>
-        <p>
-          Copyright &copy; mukaiizawa
-        </p>
-      </footer>
-    </div>
-  </body>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width"/>
+<link href="https://mukaiizawa.github.io/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/>
+<link href="https://mukaiizawa.github.io/resources/css/style.css" rel="stylesheet"/>
+<title>
+Linux MintでVimをビルドしてみた
+</title>
+</head>
+<body>
+<div class="wrapper">
+<header>
+<h1>
+<a href="https://mukaiizawa.github.io/index.html">
+GoTo Great
+</a>
+<p>
+偉大なエンジニアを目指して
+</p>
+</h1>
+</header>
+<div class="inline">
+<div class="contents">
+<article>
+<header>
+<span class="fa fa-clock-o">
+</span>
+<time datetime="2016-08-19">
+2016-08-19
+</time>
+<span class="fa fa-tag">
+Linux
+</span>
+<span class="fa fa-tag">
+Vim
+</span>
+</header>
+<h1>
+Linux MintでVimをビルドしてみた
+</h1>
+<p>
+今まではWindows環境のGvim（
+<a href="http://www.vim.org/download.php">
+vim.org
+</a>
+が配布しているインストーラーでインストール）を使用していたんだけど，
+インストールしたLinuxのVimのクリップボードが使えなかった．
+</p>
+<p>
+先人の教えにしたがって
+</p>
+<p>
+$ vim --version | grep clipboard
+</p>
+<p>
+してみたらやっぱりオプションが無効でした．
+</p>
+<p>
+これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．
+</p>
+<h2>
+実際にビルド
+</h2>
+<p>
+Vimを使う利点として情報がたくさんあるということがよく挙げられますが，今回もすぐに見つかりました．
+</p>
+<p>
+<a href="http://vim-jp.org/docs/build_linux.html">
+Linuxでのビルド方法
+</a>
+</p>
+<p>
+が，早速「１．必要なパッケージのインストール」でハマりました．
+</p>
+<p>
+$ sudo apt-get build-dep vim
+[sudo] password for xxx
+Reading package lists...
+Done Building dependency tree
+Reading state information... Done
+E: You must put some 'source' URIs in your sources.list
+</p>
+<p>
+数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．
+</p>
+<ol>
+<li>
+画面右下の盾のマークをクリックしてUpdate Managerを起動
+</li>
+<img src="https://mukaiizawa.github.io/resources/images/0819_01.png" alt="Update Managerの写真"/>
+<li>
+`Edit' -&gt; `Software source'を起動
+</li>
+<img src="https://mukaiizawa.github.io/resources/images/0819_02.png" alt="Update Managerの写真"/>
+<li>
+一番下の`Enable source code repositories'をチェックして再起動．
+</li>
+</ol>
+<p>
+このあとは無事参照先の方法でbuildできました．めでたし．
+</p>
+</article>
+</div>
+<div class="sidemenu">
+<aside class="profile">
+<h1>
+プロフィール
+</h1>
+<a href="https://mukaiizawa.github.io/profile.html">
+<img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/>
+</a>
+<ul>
+<li>
+<a href="#">
+<span class="fa fa-male">
+mukaiizawa
+</span>
+</a>
+</li>
+<li>
+<a href="https://github.com/mukaiizawa" target="_blank">
+<span class="fa fa-github">
+github
+</span>
+</a>
+</li>
+<li>
+<a href="mailto:mukaiizawa@yahoo.co.jp">
+<span class="fa fa-envelope-o">
+mukaiizawa@yahoo.co.jp
+</span>
+</a>
+</li>
+</ul>
+</aside>
+<aside>
+<h1>
+最新記事
+</h1>
+<ul>
+<li>
+<a href="https://mukaiizawa.github.io/articles/2016/0819.html">
+Linux MintでVimをビルドしてみた
+</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+<footer>
+<p>
+Copyright &copy; mukaiizawa
+</p>
+</footer>
+</div>
+</body>
 </html>

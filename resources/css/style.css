@@ -127,7 +127,7 @@ body {
     padding-left: 80px;
   }
 
-  .center-box:after {
+  .inline:after {
     content: "";
     display: block;
     clear: both;
