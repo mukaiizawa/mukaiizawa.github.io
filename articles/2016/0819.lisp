@@ -12,7 +12,7 @@
       "今まではWindows環境のGvim（" (link-vim-org) "が配布しているインストーラーでインストール）を使用していたんだけど，"
       "インストールしたLinuxのVimのクリップボードが使えなかった．")
     (:p "先人の教えにしたがって")
-    (:p "$ vim --version | grep clipboard")
+    (:pre (:code "$ vim --version | grep clipboard"))
     (:p "してみたらやっぱりオプションが無効でした．")
     (:p "これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．")
     (:h2 "実際にビルド")
