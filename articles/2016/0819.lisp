@@ -1,6 +1,15 @@
 
 (require "template")
 
+;; *source* {{{
+
+(defparameter *source*
+#<< END
+<span id="L1" class="LineNr">1 </span>vim <span class="Special">--version</span> | grep clipboard
+END)
+
+;; }}}
+
 (make-article
   :title "Linux MintでVimをビルドしてみた"
   :time "2016-08-19"
@@ -12,7 +21,7 @@
       "今まではWindows環境のGvim（" (link-vim-org) "が配布しているインストーラーでインストール）を使用していたんだけど，"
       "インストールしたLinuxのVimのクリップボードが使えなかった．")
     (:p "先人の教えにしたがって")
-    (:pre (:code "$ vim --version | grep clipboard"))
+    (to-pre-code *source*)
     (:p "してみたらやっぱりオプションが無効でした．")
     (:p "これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．")
     (:h2 "実際にビルド")
