@@ -18,8 +18,8 @@ pre code {
 
 .code {
   border: groove 4px #dcdcdc;
-  white-space      : nowrap;
-  font-family      : monospace;
+  white-space : nowrap;
+  font-family : monospace;
 }
 
 .LineNr {
