@@ -9,6 +9,10 @@ body {
 
 /* .code {{{ */
 
+pre code {
+  border: solid 4px #404040;
+}
+
 .code {
   border: groove 4px #dcdcdc;
   white-space      : nowrap;

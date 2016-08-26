@@ -5,7 +5,7 @@
 
 (defparameter *source*
 #<< END
-<span id="L1" class="LineNr">1 </span>vim <span class="Special">--version</span> | grep clipboard
+$ vim <span class="Special">--version</span> | grep clipboard
 END)
 
 ;; }}}
