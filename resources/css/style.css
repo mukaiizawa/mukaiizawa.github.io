@@ -7,6 +7,22 @@ body {
   font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
+/* a:visited {{{ */
+
+a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* }}} */
+/* a:link {{{ */
+
+a:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* }}} */
 /* .code {{{ */
 
 pre code {
@@ -111,7 +127,6 @@ pre code {
 }
 
 /* }}} */
-
 /* .wrapper header {{{ */
 
 .wrapper header {
@@ -202,13 +217,13 @@ pre code {
 .sidemenu aside li a {
   display: block;
   margin-bottom: 5px;
-  color: #000000;
+  color: #ffffff;
   font-size: 15.5px;
   text-decoration: none;
 }
 
 .sidemenu aside li a:hover {
-  color: #909090;
+  color: #aaaaaa;
 }
 
 /* }}} */
