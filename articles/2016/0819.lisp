@@ -3,10 +3,20 @@
 
 ;; *source* {{{
 
-(defparameter *source*
+(defparameter *source* '(
 #<< END
 $ vim <span class="Special">--version</span> | grep clipboard
-END)
+END
+
+#<< END
+$ sudo apt-get build-dep vim
+<span class="Statement">[</span>sudo<span class="Statement">]</span> password <span class="Statement">for</span> xxx
+Reading package lists...
+Done Building dependency tree
+Reading state information... Done
+E: You must put some <span class="Statement">'</span><span class="String">source</span><span class="Statement">'</span> URIs <span class="Statement">in</span> your sources.list
+END
+))
 
 ;; }}}
 
@@ -19,22 +29,16 @@ END)
     (:h1 "Linux MintでVimをビルドしてみた")
     (:p
       "今まではWindows環境のGvim（" (link-vim-org) "が配布しているインストーラーでインストール）を使用していたんだけど，"
-      "インストールしたLinuxのVimのクリップボードが使えなかった．")
-    (:p "先人の教えにしたがって")
-    (to-pre-code *source*)
-    (:p "してみたらやっぱりオプションが無効でした．")
-    (:p "これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．")
+      "インストールしたLinuxのVimのクリップボードが使えなかった．確認してみたら")
+    (to-pre-code (pop *source*))
+    (:p
+      "オプションが無効でした．"
+      "これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．")
     (:h2 "実際にビルド")
-    (:p "Vimを使う利点として情報がたくさんあるということがよく挙げられますが，今回もすぐに見つかりました．")
+    (:p "Vimについての情報は豊富で大抵の情報はすぐに見つかるので便利．")
     (:p (:a ((href "http://vim-jp.org/docs/build_linux.html")) "Linuxでのビルド方法"))
     (:p "が，早速「１．必要なパッケージのインストール」でハマりました．")
-    (:p
-      "$ sudo apt-get build-dep vim"
-      "[sudo] password for xxx"
-      "Reading package lists..."
-      "Done Building dependency tree"
-      "Reading state information... Done"
-      "E: You must put some 'source' URIs in your sources.list")
+    (to-pre-code (pop *source*))
     (:p "数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．")
     (:ol
       (:li "画面右下の盾のマークをクリックしてUpdate Managerを起動")

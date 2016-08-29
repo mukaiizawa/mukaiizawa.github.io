@@ -2,16 +2,15 @@
 (require "template")
 
 (make-article
-  :title "cssで段組実装時に２段になってしまう"
+  :title "cssで段組を実装してみた"
   :time "2016-08-22"
-  :tags  '("html")
+  :tags  '("html" "css")
   :article
   (list
-    (:h1 "cssで段組実装時に２段になってしまう")
+    (:h1 "cssで段組を実装してみた")
     (:p
       "仕事ではBootStrap使って段組実装してばっかりだったのだけれど，"
-      "ブログ作成するときに自力で段組を実装していたら詰まったのでメモ．"
-      )
+      "ブログ作成するときに自力で段組を実装していたら詰まったのでメモ．")
     (:h2 "２つのwidthの合計が100%なのにあふれた")
     (:p "下の図のようにwrapperの中にbox1 box2を並べようと思った．")
     (:div ((style "height:auto; width:500px; border: solid 3px #000000;"))

@@ -35,7 +35,7 @@
        (:p "偉大なエンジニアを目指して"))))
 
 ;; }}}
-;; default-page-header {{{
+;; default-article-header {{{
 
 (defmacro default-article-header (time tags)
   `(:header
@@ -64,7 +64,9 @@
   `(:aside
      (:h1 "最新記事")
      (:ul
-       (:li (:a ((href (to-absolute "articles/2016/0819.html"))) "Linux MintでVimをビルドしてみた")))))
+       (:li (:a ((href (to-absolute "articles/2016/0822.html"))) "cssで段組を実装してみた"))
+       (:li (:a ((href (to-absolute "articles/2016/0819.html"))) "Linux MintでVimをビルドしてみた"))
+       )))
 
 ;; }}}
 ;; default-page-footer {{{
