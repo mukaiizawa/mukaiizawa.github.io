@@ -25,15 +25,11 @@ a:link {
 /* }}} */
 /* .code {{{ */
 
-pre code {
+.code {
   border: groove 4px #404040;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.code {
-  border: groove 4px #dcdcdc;
   white-space : nowrap;
   font-family : monospace;
 }
