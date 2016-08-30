@@ -4,7 +4,7 @@
 
 ;; to-absolute {{{
 
-(defmacro to-absolute (str)
+(defun to-absolute (str)
   (mkstr "https://mukaiizawa.github.io/" str))
 
 ;; }}}
