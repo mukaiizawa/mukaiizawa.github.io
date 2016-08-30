@@ -1,25 +1,12 @@
 @charset "UTF-8";
 
+/* body {{{ */
+
 body {
   font-size: 14px;
   background-color: #303030;
   color: #ffffff;
   font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
-}
-
-/* a:visited {{{ */
-
-a:visited {
-  color: #fadd5a;
-  text-decoration: none;
-}
-
-/* }}} */
-/* a:link {{{ */
-
-a:link {
-  color: #fadd5a;
-  text-decoration: none;
 }
 
 /* }}} */
@@ -122,6 +109,15 @@ code .Delimiter,
 code .Error,
 code .Todo {
   font-weight: bold;
+}
+
+/* }}} */
+/* a:visited, a:link {{{ */
+
+a:visited,
+a:link {
+  color: #fadd5a;
+  text-decoration: none;
 }
 
 /* }}} */
@@ -265,3 +261,4 @@ code .Todo {
   }
 
 }
+
