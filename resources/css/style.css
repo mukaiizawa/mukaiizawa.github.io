@@ -30,101 +30,97 @@ pre {
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+  font-family : monospace;
 }
 
 /* }}} */
 /* code {{{ */
 
-code {
-  white-space : nowrap;
-  font-family : monospace;
-}
-
-.LineNr {
+code .LineNr {
   color: #808080;
 }
 
-.SpecialComment,
-.Comment {
+code .SpecialComment,
+code .Comment {
  color: #a6f02e;
 }
 
-.Constant,
-.Boolean,
-.Identifier,
-.Type,
-.StorageClass,
-.Typedef,
-.Special,
-.SpecialChar,
-.Tag,
-.Delimiter,
-.Debug {
+code .Constant,
+code .Boolean,
+code .Identifier,
+code .Type,
+code .StorageClass,
+code .Typedef,
+code .Special,
+code .SpecialChar,
+code .Tag,
+code .Delimiter,
+code .Debug {
   color: #87ceeb;
 }
 
-.String {
+code .String {
   color: #ffaaaa;
 }
 
-.Character {
+code .Character {
   color: #db7093;
 }
 
-.Number,
-.Float {
+code .Number,
+code .Float {
   color: #fadd5a;
 }
 
-.Function,
-.PreProc,
-.Include,
-.Define,
-.Macro,
-.PreCondit {
+code .Function,
+code .PreProc,
+code .Include,
+code .Define,
+code .Macro,
+code .PreCondit {
  color: #77aa77;
 }
 
-.Statement,
-.Conditional,
-.Repeat,
-.Label,
-.Operator,
-.Keyword,
-.Structure {
+code .Statement,
+code .Conditional,
+code .Repeat,
+code .Label,
+code .Operator,
+code .Keyword,
+code .Structure {
   color: #cc7833;
 }
 
-.Exception {
+code .Exception {
   color: #f86060;
 }
 
 
-.Underlined {
+code .Underlined {
   color: #0000cc;
   text-decoration: underline;
 }
 
-.Ignore {
+code .Ignore {
   color: #ff0000;
 }
 
-.Error,
-.Todo {
+code .Error,
+code .Todo {
   color: #66d9ef;
   background-color: #202020;
 }
 
-.Folded {
+code .Folded {
   color: #aaaaaa;
   background-color: #404040;
 }
 
-.Boolean,
-.Exception,
-.Delimiter,
-.Error,
-.Todo {
+code .Boolean,
+code .Exception,
+code .Delimiter,
+code .Error,
+code .Todo {
   font-weight: bold;
 }
 
