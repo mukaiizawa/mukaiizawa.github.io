@@ -7,10 +7,6 @@ body {
   font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
-pre, img, blockquote {
-  border: groove 4px #404040;
-}
-
 /* a:visited {{{ */
 
 a:visited {
@@ -29,7 +25,7 @@ a:link {
 /* }}} */
 /* .code {{{ */
 
-.code {
+code {
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
