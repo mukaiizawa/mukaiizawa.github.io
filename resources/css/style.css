@@ -23,13 +23,19 @@ a:link {
 }
 
 /* }}} */
-/* code {{{ */
+/* pre {{{ */
 
-code {
+pre {
   border: groove 4px #404040;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+/* }}} */
+/* code {{{ */
+
+code {
   white-space : nowrap;
   font-family : monospace;
 }
