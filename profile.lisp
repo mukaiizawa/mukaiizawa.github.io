@@ -16,14 +16,11 @@
                 (:h1 "プロフィール")
                 (:p
                   "Common LispとVimが好きです．"
-                  "このブログも実はLispで書かれていたりいなかったりして．"
-                  "ですがEmacsは使えません．生粋のVimmerです．")
-                (:p
-                  "たくさんの先人のVimmerの方々のWebの情報により，ここまで成長することができました．"
-                  "感謝の気持ちを込めてVimmer入門のためVimtutor for Webの作成を考えております．"
-                  "このサイトもたくさんの人々の役に立ちますように．")))
+                  "このブログも実はLispで生成しています．"
+                  "ですがEmacsは使えません．生粋のVimmerです．")))
             (:div ((class "sidemenu"))
               (default-profile)
               (default-sidemenu)))
-          (default-page-footer)))))
+          (default-page-footer)
+          (default-scripts)))))
   "profile.html")

@@ -39,7 +39,7 @@
 
 (defmacro default-article-header (time tags)
   `(:header
-     (:span ((class "fa fa-clock-o"))) (:htime ((datetime ,time)) ,time)
+     (:span ((class "fa fa-clock-o"))) (:time ((datetime ,time)) ,time)
      (loop for tag in ,tags
            collect
            (:span ((class "fa fa-tag")) tag))))
@@ -75,6 +75,14 @@
   `(:footer (:p "Copyright © mukaiizawa")))
 
 ;; }}}
+;; default-scripts {{{
+
+(defmacro default-scripts ()
+  `(list
+     (:script ((stc (to-absolute "resources/scripts/jquery.js"))))
+     (:script ((stc (to-absolute "resources/scripts/common.js"))))))
+
+;; }}}
 
 (defstruct article
   (title "Goto Great")
@@ -101,5 +109,6 @@
                (:div ((class "sidemenu"))
                  (article-profile ,article)
                  (article-sidemenu ,article)))
-             (default-page-footer)))))))
+             (default-page-footer)
+             (default-scripts)))))))
 
