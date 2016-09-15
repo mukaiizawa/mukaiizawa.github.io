@@ -1,6 +1,6 @@
 
 $(function(){
-  $('pre code').on('click', function(){
+  $('pre > code').on('click', function(){
     console.log(this);
     var range = document.createRange();
     range.selectNodeContents(this);
