@@ -8,6 +8,12 @@
   (mkstr "https://mukaiizawa.github.io/" str))
 
 ;; }}}
+;; resource-path {{{
+
+(defun resource-path (str)
+  (to-absolute (mkstr "resources/" str)))
+
+;; }}}
 ;; link-vim-org {{{
 
 (defmacro link-vim-org ()
@@ -21,8 +27,8 @@
   `(list
      (:meta ((charset "utf-8")))
      (:meta ((name "viewport") (content "width=device-width")))
-     (:link ((href (to-absolute "resources/fonts/font-awesome-4.6.3/font-awesome.css")) (rel "stylesheet")))
-     (:link ((href (to-absolute "resources/css/style.css")) (rel "stylesheet")))
+     (:link ((href (resource-path "fonts/font-awesome-4.6.3/font-awesome.css")) (rel "stylesheet")))
+     (:link ((href (resource-path "css/style.css")) (rel "stylesheet")))
      (:title ,title)))
 
 ;; }}}
@@ -51,7 +57,7 @@
   `(:aside ((class "profile"))
      (:h1 "プロフィール")
      (:a ((href (to-absolute "profile.html")))
-       (:img ((src (to-absolute "resources/images/profile_picture.png")) (alt "photo of mukaiizawa") (width "80px") (height "80px;"))))
+       (:img ((src (resource-path "images/profile_picture.png")) (alt "photo of mukaiizawa") (width "80px") (height "80px;"))))
      (:ul
        (:li (:a ((href "#")) (:span ((class "fa fa-male")) "mukaiizawa")))
        (:li (:a ((href "https://github.com/mukaiizawa") (target "_blank")) (:span ((class "fa fa-github")) "github")))
@@ -79,8 +85,8 @@
 
 (defmacro default-scripts ()
   `(list
-     (:script ((stc (to-absolute "resources/scripts/jquery.js"))))
-     (:script ((stc (to-absolute "resources/scripts/common.js"))))))
+     (:script ((src (resource-path "scripts/jquery.js"))))
+     (:script ((src (resource-path "scripts/common.js"))))))
 
 ;; }}}
 
