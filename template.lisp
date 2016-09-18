@@ -109,6 +109,6 @@
                (:div ((class "sidemenu"))
                  (article-profile ,article)
                  (article-sidemenu ,article)))
-             (default-page-footer)
-             (default-scripts)))))))
+             (default-page-footer))
+           (default-scripts))))))
 

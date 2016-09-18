@@ -23,7 +23,7 @@
             (:div ((class "sidemenu"))
               (default-profile)
               (default-sidemenu)))
-          (default-page-footer)
-          (default-scripts)))))
+          (default-page-footer))
+        (default-scripts))))
   "index.html")
 
