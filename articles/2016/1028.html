@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><link href="https://mukaiizawa.github.io/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/><link href="https://mukaiizawa.github.io/resources/css/style.css" rel="stylesheet"/><title>Goでリサージュ曲線描いてみた</title></head><body><div class="wrapper"><header><h1><a href="https://mukaiizawa.github.io/index.html">GoTo Great</a><p>偉大なエンジニアを目指して</p></h1></header><div class="inline"><div class="contents"><article><header><span class="fa fa-clock-o"></span><time datetime="2016-10-28">2016-10-28</time><span class="fa fa-tag">Go</span></header><h1>Goでリサージュ曲線描いてみた</h1><p>最近Goの勉強をはじめてみました．
+      いままでLispしか真面目に勉強した言語がないのでいろいろ戸惑っています．
+      プログラミング言語Go (ADDISON-WESLEY PROFESSIONAL COMPUTING SERIES COMPUTING SERIES)
+      Alan A.A. Donovan (著), Brian W. Kernighan (著), 柴田 芳樹 (翻訳)を読んで勉強してます．
+      チュートリアルの章から良書の予感．今日はその中でリサージュ曲線描くプログラムがあったのでそれを改造したものを紹介します．</p><h2>ソースコード</h2><p>ぐだぐだ説明するよりも出来上がったGIFとソースコードを見ていただいたほうが早いので掲載します．
+      リサージュ曲線和む．</p>
+<pre><code>
+<span class="Statement">package</span> main
+
+<span class="Statement">import</span> (
+  <span class="String">&amp;quot;image&amp;quot;</span>
+  <span class="String">&amp;quot;image/color&amp;quot;</span>
+  <span class="String">&amp;quot;image/gif&amp;quot;</span>
+  <span class="String">&amp;quot;math&amp;quot;</span>
+  <span class="String">&amp;quot;os&amp;quot;</span>
+  <span class="String">&amp;quot;strconv&amp;quot;</span>
+)
+
+<span class="Comment"> x = sin(a*t + delta)</span>
+<span class="Comment"> y = sin(b*t)</span>
+
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.White, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+
+<span class="Statement">const</span> (
+  BLACK = <span class="Number">0</span>
+  WHITE = <span class="Number">1</span>
+  GREEN = <span class="Number">2</span>
+  r = <span class="Number">100</span>
+  frame = <span class="Number">10</span>
+  delay = <span class="Number">10</span>
+)
+
+<span class="Statement">func</span> lissajous(a <span class="Type">float64</span>, b <span class="Type">float64</span>) {
+  anim := gif.GIF{LoopCount: frame}
+  phase := <span class="Float">0.0</span>
+  <span class="Statement">for</span> i := <span class="Number">0</span>; i &amp;lt; frame; i++ {
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">2</span>*r, <span class="Number">2</span>*r)
+    img := image.NewPaletted(rect, palette)
+    <span class="Statement">for</span> t := <span class="Float">0.0</span>; t &amp;lt; <span class="Number">2</span>*math.Pi; t += <span class="Float">0.0001</span> {
+      x := math.Sin(a * t)
+      y := math.Sin(b * t + phase)
+      img.SetColorIndex(r+<span class="Type">int</span>(x*r), r+<span class="Type">int</span>(y*r), GREEN)
+    }
+    <span class="Statement">for</span> i := <span class="Number">0</span>; i &amp;lt;= <span class="Number">2</span>*r; i++ {
+      img.SetColorIndex(r, i, GREEN)
+      img.SetColorIndex(i, r, GREEN)
+    }
+    phase += <span class="Float">0.1</span>
+    anim.Delay = <span class="Statement">append</span>(anim.Delay, delay)
+    anim.Image = <span class="Statement">append</span>(anim.Image, img)
+  }
+  gif.EncodeAll(os.Stdout, &amp;amp;anim)
+}
+
+<span class="Statement">func</span> main() {
+  a := <span class="Float">1.0</span>
+  b := <span class="Float">1.0</span>
+  argc := <span class="Statement">len</span>(os.Args[<span class="Number">1</span>:])
+  <span class="Statement">if</span> argc &amp;gt;= <span class="Number">1</span>  &amp;amp;&amp;amp; argc &amp;lt;= <span class="Number">2</span>{
+    a, _ = strconv.ParseFloat(os.Args[<span class="Number">1</span>], <span class="Number">64</span>)
+  } <span class="Statement">else</span> <span class="Statement">if</span> argc == <span class="Number">2</span> {
+    b, _ = strconv.ParseFloat(os.Args[<span class="Number">2</span>], <span class="Number">64</span>)
+  }
+  lissajous(a, b)
+}
+</code></pre><p>原本はランダムでリサージュ図形が作成される実装になっていたけども，
+      好きなリサージュ曲線を描けるようにコマンドライン引数を使えるようにしました．</p><img src="https://mukaiizawa.github.io/resources/images/1028_01.gif" alt="リサージュ曲線"/><p>a=1, b=1</p><img src="https://mukaiizawa.github.io/resources/images/1028_02.gif" alt="リサージュ曲線"/><p>a=1, b=2</p><img src="https://mukaiizawa.github.io/resources/images/1028_03.gif" alt="リサージュ曲線"/><p>a=3, b=4</p><p>リサージュ曲線和む．</p></article></div><div class="sidemenu"><aside class="profile"><h1>プロフィール</h1><a href="https://mukaiizawa.github.io/profile.html"><img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/></a><ul><li><a href="#"><span class="fa fa-male">mukaiizawa</span></a></li><li><a href="https://github.com/mukaiizawa" target="_blank"><span class="fa fa-github">github</span></a></li><li><a href="mailto:mukaiizawa@yahoo.co.jp"><span class="fa fa-envelope-o">mukaiizawa@yahoo.co.jp</span></a></li></ul></aside><aside><h1>最新記事</h1><ul><li><a href="https://mukaiizawa.github.io/articles/2016/0822.html">cssで段組を実装してみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0819.html">Linux MintでVimをビルドしてみた</a></li></ul></aside></div></div><footer><p>Copyright &copy; mukaiizawa</p></footer></div><script src="https://mukaiizawa.github.io/resources/scripts/jquery.js"></script><script src="https://mukaiizawa.github.io/resources/scripts/common.js"></script></body></html>
