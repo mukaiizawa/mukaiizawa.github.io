@@ -14,8 +14,8 @@
   <span class="String">&quot;strconv&quot;</span>
 )
 
-<span class="Comment"> x = sin(a*t + delta)</span>
-<span class="Comment"> y = sin(b*t)</span>
+<span class="Comment">// x = sin(a*t + delta)</span>
+<span class="Comment">// y = sin(b*t)</span>
 
 <span class="Statement">var</span> palette = []color.Color{color.Black, color.White, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
 
@@ -30,7 +30,7 @@
 
 <span class="Statement">func</span> lissajous(a <span class="Type">float64</span>, b <span class="Type">float64</span>) {
   anim := gif.GIF{LoopCount: frame}
-  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase = phase + <span class="Number">1</span>(<span class="Number">12</span>*math.Pi) {
+  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase = phase + <span class="Number">1</span>/(<span class="Number">12</span>*math.Pi) {
     rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">2</span>*r, <span class="Number">2</span>*r)
     img := image.NewPaletted(rect, palette)
     <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.0001</span> {
