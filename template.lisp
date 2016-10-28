@@ -2,16 +2,30 @@
 (require "xml-manager" *module-xml-manager*)
 (provide "template")
 
+(defparameter *http-root-path* "https://mukaiizawa.github.io/")
+
 ;; to-absolute {{{
 
 (defun to-absolute (str)
-  (mkstr "https://mukaiizawa.github.io/" str))
+  (mkstr *http-root-path* str))
+
+;; }}}
+;; import-img {{{
+
+(defmacro import-img (str alt &optional (width 200) (height 200))
+  `(:img ((src ,(image-path str)) (alt ,alt) (width ,width) (height ,height))))
 
 ;; }}}
 ;; resource-path {{{
 
 (defun resource-path (str)
   (to-absolute (mkstr "resources/" str)))
+
+;; }}}
+;; image-path {{{
+
+(defun image-path (str)
+  (resource-path (mkstr "images/" str)))
 
 ;; }}}
 ;; link-vim-org {{{
