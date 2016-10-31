@@ -6,61 +6,55 @@
 (defparameter *source*
 #<< END
 
+
 <span class="Statement">package</span> main
 
 <span class="Statement">import</span> (
   <span class="String">&quot;image&quot;</span>
   <span class="String">&quot;image/color&quot;</span>
   <span class="String">&quot;image/gif&quot;</span>
-  <span class="String">&quot;math&quot;</span>
   <span class="String">&quot;os&quot;</span>
-  <span class="String">&quot;strconv&quot;</span>
+  <span class="String">&quot;math&quot;</span>
 )
 
-<span class="Comment">// x = sin(a*t + phase)</span>
-<span class="Comment">// y = sin(b*t)</span>
+<span class="Comment">// x = r(t - sin(t))</span>
+<span class="Comment">// y = r(1 - cos(t))</span>
 
-<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}, color.RGBA{<span class="Number">0xff</span>, <span class="Number">0x00</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
 
 <span class="Statement">const</span> (
   BLACK = <span class="Number">0</span>
   GREEN = <span class="Number">1</span>
-  r = <span class="Number">100</span>
-  delay = <span class="Number">6</span>
+  RED = <span class="Number">2</span>
+  r = <span class="Number">32</span>
+  delta = <span class="float">0.0001</span>
 )
 
-<span class="Statement">func</span> lissajous(a <span class="Type">float64</span>, b <span class="Type">float64</span>) {
+<span class="Statement">func</span> cycloid() {
   anim := gif.GIF{}
-  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase += math.Pi/<span class="Number">64</span> {
-    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">2</span>*r, <span class="Number">2</span>*r)
+  <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">4</span>*math.Pi; t += <span class="float">0.1</span> {
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">16</span>*r, <span class="Number">4</span>*r)
     img := image.NewPaletted(rect, palette)
-    <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.0001</span> {
-      x := math.Sin(a*t)
-      y := math.Sin(b*t + phase)
-      img.SetColorIndex(r+<span class="Type">int</span>(x*r), r+<span class="Type">int</span>(y*r), GREEN)
+    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt; <span class="Number">2</span>*math.Pi; dθ += delta {
+      x := r*math.Sin(dθ) + r*t
+      y := r*math.Cos(dθ) + r
+      img.SetColorIndex(<span class="Type">int</span>(x), <span class="Type">int</span>(y), GREEN)
     }
-    <span class="Statement">for</span> i := <span class="Number">0</span>; i &lt;= <span class="Number">2</span>*r; i++ {
-      img.SetColorIndex(r, i, GREEN)
-      img.SetColorIndex(i, r, GREEN)
+    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt; t; dt += delta {
+      dx := r*(dt - math.Sin(dt))
+      dy := r*(<span class="Number">1</span> - math.Cos(dt))
+      img.SetColorIndex(<span class="Type">int</span>(dx), <span class="Type">int</span>(dy), RED)
     }
-    anim.Delay = <span class="Statement">append</span>(anim.Delay, delay)
+    anim.Delay = <span class="Statement">append</span>(anim.Delay, <span class="Number">8</span>)
     anim.Image = <span class="Statement">append</span>(anim.Image, img)
   }
   gif.EncodeAll(os.Stdout, &amp;anim)
 }
 
 <span class="Statement">func</span> main() {
-  a := <span class="float">1.0</span>
-  b := <span class="float">1.0</span>
-  argc := <span class="Statement">len</span>(os.Args[<span class="Number">1</span>:])
-  <span class="Statement">if</span> <span class="Number">1</span> &lt;= argc &amp;&amp; argc &lt;= <span class="Number">2</span>{
-    a, _ = strconv.ParseFloat(os.Args[<span class="Number">1</span>], <span class="Number">64</span>)
-  }
-  <span class="Statement">if</span> argc == <span class="Number">2</span> {
-    b, _ = strconv.ParseFloat(os.Args[<span class="Number">2</span>], <span class="Number">64</span>)
-  }
-  lissajous(a, b)
+  cycloid()
 }
+
 
 END)
 
