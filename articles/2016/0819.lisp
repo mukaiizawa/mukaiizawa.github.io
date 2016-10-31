@@ -42,9 +42,9 @@ END
     (:p "数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．")
     (:ol
       (:li "画面右下の盾のマークをクリックしてUpdate Managerを起動")
-      (:img ((src (to-absolute "resources/images/0819_01.png")) (alt "Update Managerの写真")))
+      (import-img "2016/0819_01.png" "Update Managerの写真")
       (:li "`Edit' -> `Software source'を起動")
-      (:img ((src (to-absolute "resources/images/0819_02.png")) (alt "Update Managerの写真")))
+      (import-img "2016/0819_02.png" "Update Managerの写真")
       (:li "一番下の`Enable source code repositories'をチェックして再起動．"))
     (:p "このあとは無事参照先の方法でbuildできました．めでたし．")))
 
