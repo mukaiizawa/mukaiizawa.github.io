@@ -14,28 +14,26 @@
   <span class="String">&quot;strconv&quot;</span>
 )
 
-<span class="Comment">// x = sin(a*t + delta)</span>
+<span class="Comment">// x = sin(a*t + phase)</span>
 <span class="Comment">// y = sin(b*t)</span>
 
-<span class="Statement">var</span> palette = []color.Color{color.Black, color.White, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
 
 <span class="Statement">const</span> (
   BLACK = <span class="Number">0</span>
-  WHITE = <span class="Number">1</span>
-  GREEN = <span class="Number">2</span>
+  GREEN = <span class="Number">1</span>
   r = <span class="Number">100</span>
-  frame = <span class="Number">24</span>
   delay = <span class="Number">6</span>
 )
 
 <span class="Statement">func</span> lissajous(a <span class="Type">float64</span>, b <span class="Type">float64</span>) {
-  anim := gif.GIF{LoopCount: frame}
-  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase = phase + <span class="Number">1</span>/(<span class="Number">12</span>*math.Pi) {
+  anim := gif.GIF{}
+  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase += math.Pi/<span class="Number">64</span> {
     rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">2</span>*r, <span class="Number">2</span>*r)
     img := image.NewPaletted(rect, palette)
     <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.0001</span> {
-      x := math.Sin(a * t)
-      y := math.Sin(b * t + phase)
+      x := math.Sin(a*t)
+      y := math.Sin(b*t + phase)
       img.SetColorIndex(r+<span class="Type">int</span>(x*r), r+<span class="Type">int</span>(y*r), GREEN)
     }
     <span class="Statement">for</span> i := <span class="Number">0</span>; i &lt;= <span class="Number">2</span>*r; i++ {
@@ -60,5 +58,6 @@
   }
   lissajous(a, b)
 }
+
 </code></pre><p>原本はランダムでリサージュ図形が作成される実装になっていたけども，
       好きなリサージュ曲線を描けるようにコマンドライン引数を使えるようにしました．</p><img src="https://mukaiizawa.github.io/resources/images/1028_01.gif" alt="リサージュ曲線1" width="200" height="200"/><p>a=1, b=1</p><img src="https://mukaiizawa.github.io/resources/images/1028_02.gif" alt="リサージュ曲線2" width="200" height="200"/><p>a=1, b=2</p><img src="https://mukaiizawa.github.io/resources/images/1028_03.gif" alt="リサージュ曲線3" width="200" height="200"/><p>a=3, b=4</p><p>リサージュ曲線和む．</p></article></div><div class="sidemenu"><aside class="profile"><h1>プロフィール</h1><a href="https://mukaiizawa.github.io/profile.html"><img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/></a><ul><li><a href="#"><span class="fa fa-male">mukaiizawa</span></a></li><li><a href="https://github.com/mukaiizawa" target="_blank"><span class="fa fa-github">github</span></a></li><li><a href="mailto:mukaiizawa@yahoo.co.jp"><span class="fa fa-envelope-o">mukaiizawa@yahoo.co.jp</span></a></li></ul></aside><aside><h1>最新記事</h1><ul><li><a href="https://mukaiizawa.github.io/articles/2016/1028.html">Goでリサージュ曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0822.html">cssで段組を実装してみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0819.html">Linux MintでVimをビルドしてみた</a></li></ul></aside></div></div><footer><p>Copyright &copy; mukaiizawa</p></footer></div><script src="https://mukaiizawa.github.io/resources/scripts/jquery.js"></script><script src="https://mukaiizawa.github.io/resources/scripts/common.js"></script></body></html>

@@ -17,28 +17,26 @@
   <span class="String">&quot;strconv&quot;</span>
 )
 
-<span class="Comment">// x = sin(a*t + delta)</span>
+<span class="Comment">// x = sin(a*t + phase)</span>
 <span class="Comment">// y = sin(b*t)</span>
 
-<span class="Statement">var</span> palette = []color.Color{color.Black, color.White, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
 
 <span class="Statement">const</span> (
   BLACK = <span class="Number">0</span>
-  WHITE = <span class="Number">1</span>
-  GREEN = <span class="Number">2</span>
+  GREEN = <span class="Number">1</span>
   r = <span class="Number">100</span>
-  frame = <span class="Number">24</span>
   delay = <span class="Number">6</span>
 )
 
 <span class="Statement">func</span> lissajous(a <span class="Type">float64</span>, b <span class="Type">float64</span>) {
-  anim := gif.GIF{LoopCount: frame}
-  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase = phase + <span class="Number">1</span>/(<span class="Number">12</span>*math.Pi) {
+  anim := gif.GIF{}
+  <span class="Statement">for</span> phase := <span class="float">0.0</span>; phase &lt; <span class="Number">2</span>*math.Pi; phase += math.Pi/<span class="Number">64</span> {
     rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">2</span>*r, <span class="Number">2</span>*r)
     img := image.NewPaletted(rect, palette)
     <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.0001</span> {
-      x := math.Sin(a * t)
-      y := math.Sin(b * t + phase)
+      x := math.Sin(a*t)
+      y := math.Sin(b*t + phase)
       img.SetColorIndex(r+<span class="Type">int</span>(x*r), r+<span class="Type">int</span>(y*r), GREEN)
     }
     <span class="Statement">for</span> i := <span class="Number">0</span>; i &lt;= <span class="Number">2</span>*r; i++ {
@@ -63,6 +61,7 @@
   }
   lissajous(a, b)
 }
+
 
 END
 )
