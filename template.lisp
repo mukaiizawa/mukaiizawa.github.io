@@ -1,6 +1,6 @@
 
-(require "xml-manager" *module-xml-manager*)
-(provide "template")
+(require :xml-manager *module-xml-manager*)
+(provide :template)
 
 (defparameter *http-root-path* "https://mukaiizawa.github.io/")
 
@@ -84,11 +84,11 @@
   `(:aside
      (:h1 "最新記事")
      (:ul
+       (:li (:a ((href (to-absolute "articles/2016/1031.html"))) "Goでアストロイド曲線描いてみた"))
        (:li (:a ((href (to-absolute "articles/2016/1031.html"))) "Goでサイクロイド曲線描いてみた"))
        (:li (:a ((href (to-absolute "articles/2016/1028.html"))) "Goでリサージュ曲線描いてみた"))
        (:li (:a ((href (to-absolute "articles/2016/0822.html"))) "cssで段組を実装してみた"))
-       (:li (:a ((href (to-absolute "articles/2016/0819.html"))) "Linux MintでVimをビルドしてみた"))
-       )))
+       (:li (:a ((href (to-absolute "articles/2016/0819.html"))) "Linux MintでVimをビルドしてみた")))))
 
 ;; }}}
 ;; default-page-footer {{{

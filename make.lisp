@@ -1,5 +1,5 @@
 
-(require "stdlib" *module-stdlib*)
+(require :stdlib *module-stdlib*)
 (load "template")
 
 (defun get-article (pathname)

@@ -1,5 +1,5 @@
 
-(require "template")
+(require :template)
 
 (make-article
   :title "cssで段組を実装してみた"

@@ -1,5 +1,5 @@
 
-(require "template")
+(require :template)
 
 ;; *source* {{{
 

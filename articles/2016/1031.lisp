@@ -1,5 +1,5 @@
 
-(require "template")
+(require :template)
 
 ;; *source* {{{
 
@@ -68,7 +68,7 @@ END)
   (list
     (:h1 "Goでサイクロイド曲線描いてみた")
     (:p
-      "先日" (:a ((href (to-absolute "articles/2016/1028.html"))) "Goでリサージュ曲線書いた")
+      "先日" (:a ((href (to-absolute "articles/2016/1028.html"))) "Goでリサージュ曲線書いてみた")
       "ので，ついでにサイクロイド曲線も書いてみました．
       最小作用の原理と最速効果曲線の話を思い出したりしたりしなかったり．")
     (:h2 "ソースコード")
