@@ -6,7 +6,6 @@
 (defparameter *source*
 #<< END
 
-
 <span class="Statement">package</span> main
 
 <span class="Statement">import</span> (
@@ -26,21 +25,29 @@
   BLACK = <span class="Number">0</span>
   GREEN = <span class="Number">1</span>
   RED = <span class="Number">2</span>
-  r = <span class="Number">32</span>
-  delta = <span class="float">0.0001</span>
+  r = <span class="Number">50</span>
+  Δ = <span class="float">0.0001</span>
 )
 
 <span class="Statement">func</span> cycloid() {
   anim := gif.GIF{}
   <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">4</span>*math.Pi; t += <span class="float">0.1</span> {
-    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">16</span>*r, <span class="Number">4</span>*r)
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">14</span>*r, <span class="Number">4</span>*r)
     img := image.NewPaletted(rect, palette)
-    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt; <span class="Number">2</span>*math.Pi; dθ += delta {
-      x := r*math.Sin(dθ) + r*t
-      y := r*math.Cos(dθ) + r
+    <span class="Comment">// circle</span>
+    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt; <span class="Number">2</span>*math.Pi; dθ += Δ {
+      x := r*math.Cos(dθ) + r*t
+      y := r*math.Sin(dθ) + r
       img.SetColorIndex(<span class="Type">int</span>(x), <span class="Type">int</span>(y), GREEN)
     }
-    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt; t; dt += delta {
+    <span class="Comment">// circle axes</span>
+    <span class="Statement">for</span> ds := <span class="float">0.0</span>; ds &lt;= r; ds += <span class="float">1.0</span> {
+      x := -ds*math.Cos(t-math.Pi/<span class="Number">2</span>) + r*t
+      y := ds*math.Sin(t-math.Pi/<span class="Number">2</span>) + r
+      img.SetColorIndex(<span class="Type">int</span>(x), <span class="Type">int</span>(y), RED)
+    }
+    <span class="Comment">// trajectory</span>
+    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt; t; dt += Δ {
       dx := r*(dt - math.Sin(dt))
       dy := r*(<span class="Number">1</span> - math.Cos(dt))
       img.SetColorIndex(<span class="Type">int</span>(dx), <span class="Type">int</span>(dy), RED)
@@ -54,7 +61,6 @@
 <span class="Statement">func</span> main() {
   cycloid()
 }
-
 
 END)
 
