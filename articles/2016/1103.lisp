@@ -6,69 +6,70 @@
 (defparameter *source*
 #<< END
 
-package main
+<span class="Statement">package</span> main
 
-import (
-  "image"
-  "image/color"
-  "image/gif"
-  "math"
-  "os"
+<span class="Statement">import</span> (
+  <span class="String">&quot;image&quot;</span>
+  <span class="String">&quot;image/color&quot;</span>
+  <span class="String">&quot;image/gif&quot;</span>
+  <span class="String">&quot;math&quot;</span>
+  <span class="String">&quot;os&quot;</span>
 )
 
-// x = 2r(1+cos(t))cos(t)
-// y = 2r(1+cos(t))sin(t)
+<span class="Comment">// x = 2r(1+cos(t))cos(t)</span>
+<span class="Comment">// y = 2r(1+cos(t))sin(t)</span>
 
-var palette = []color.Color{color.Black, color.RGBA{0x0, 0xff, 0x0, 0xff}, color.RGBA{0xff, 0x00, 0x0, 0xff}}
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}, color.RGBA{<span class="Number">0xff</span>, <span class="Number">0x00</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
 
-const (
-  BLACK = 0
-  GREEN = 1
-  RED = 2
-  r = 40
+<span class="Statement">const</span> (
+  BLACK = <span class="Number">0</span>
+  GREEN = <span class="Number">1</span>
+  RED = <span class="Number">2</span>
+  r = <span class="Number">40</span>
 )
 
-func cardioid() {
+<span class="Statement">func</span> cardioid() {
   anim := gif.GIF{}
-  for t := 0.0; t < 2*math.Pi; t += 0.02 {
-    rect := image.Rect(0, 0, 6*r, 6*r)
+  <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.02</span> {
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">6</span>*r, <span class="Number">6</span>*r)
     img := image.NewPaletted(rect, palette)
-    for ds := 0; ds <= 6*r; ds++ {
-      // coordinate axes
-      img.SetColorIndex(3*r, ds, GREEN)
-      img.SetColorIndex(ds, 3*r, GREEN)
+    <span class="Statement">for</span> ds := <span class="Number">0</span>; ds &lt;= <span class="Number">6</span>*r; ds++ {
+      <span class="Comment">// coordinate axes</span>
+      img.SetColorIndex(<span class="Number">3</span>*r, ds, GREEN)
+      img.SetColorIndex(ds, <span class="Number">3</span>*r, GREEN)
     }
-    for dθ := 0.0; dθ <= 2*math.Pi; dθ += 0.001 {
-      // center circle
+    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt;= <span class="Number">2</span>*math.Pi; dθ += <span class="float">0.001</span> {
+      <span class="Comment">// center circle</span>
       x1 := r * math.Cos(dθ)
       y1 := r * math.Sin(dθ)
-      img.SetColorIndex(3*r+int(x1), 3*r+int(y1), GREEN)
-      // outer circle 
-      x2 := 2*r*math.Cos(t) + r*math.Cos(dθ)
-      y2 := 2*r*math.Sin(t) + r*math.Sin(dθ)
-      img.SetColorIndex(3*r+int(x2), 3*r+int(y2), GREEN)
+      img.SetColorIndex(<span class="Number">3</span>*r+<span class="Type">int</span>(x1), <span class="Number">3</span>*r+<span class="Type">int</span>(y1), GREEN)
+      <span class="Comment">// outer circle </span>
+      x2 := <span class="Number">2</span>*r*math.Cos(t) + r*math.Cos(dθ)
+      y2 := <span class="Number">2</span>*r*math.Sin(t) + r*math.Sin(dθ)
+      img.SetColorIndex(<span class="Number">3</span>*r+<span class="Type">int</span>(x2), <span class="Number">3</span>*r+<span class="Type">int</span>(y2), GREEN)
     }
-    for ds := 0.0; ds <= r; ds += 1.0 {
-      // cardioid axes
-      x := ds*math.Cos(2*t) + 2*r*math.Cos(t)
-      y := ds*math.Sin(2*t) + 2*r*math.Sin(t)
-      img.SetColorIndex(3*r+int(x), 3*r+int(y), RED)
+    <span class="Statement">for</span> ds := <span class="float">0.0</span>; ds &lt;= r; ds += <span class="float">1.0</span> {
+      <span class="Comment">// cardioid axes</span>
+      x := ds*math.Cos(<span class="Number">2</span>*t) + <span class="Number">2</span>*r*math.Cos(t)
+      y := ds*math.Sin(<span class="Number">2</span>*t) + <span class="Number">2</span>*r*math.Sin(t)
+      img.SetColorIndex(<span class="Number">3</span>*r+<span class="Type">int</span>(x), <span class="Number">3</span>*r+<span class="Type">int</span>(y), RED)
     }
-    for dt := 0.0; dt <= t; dt += 0.001{
-      // trajectory
-      x := 2 * r * (1 + math.Cos(dt)) * math.Cos(dt)
-      y := 2 * r * (1 + math.Cos(dt)) * math.Sin(dt)
-      img.SetColorIndex(2*r+int(x), 3*r+int(y), RED)
+    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt;= t; dt += <span class="float">0.001</span>{
+      <span class="Comment">// trajectory</span>
+      x := <span class="Number">2</span> * r * (<span class="Number">1</span> + math.Cos(dt)) * math.Cos(dt)
+      y := <span class="Number">2</span> * r * (<span class="Number">1</span> + math.Cos(dt)) * math.Sin(dt)
+      img.SetColorIndex(<span class="Number">2</span>*r+<span class="Type">int</span>(x), <span class="Number">3</span>*r+<span class="Type">int</span>(y), RED)
     }
-    anim.Delay = append(anim.Delay, 6)
-    anim.Image = append(anim.Image, img)
+    anim.Delay = <span class="Statement">append</span>(anim.Delay, <span class="Number">6</span>)
+    anim.Image = <span class="Statement">append</span>(anim.Image, img)
   }
-  gif.EncodeAll(os.Stdout, &anim)
+  gif.EncodeAll(os.Stdout, &amp;anim)
 }
 
-func main() {
+<span class="Statement">func</span> main() {
   cardioid()
 }
+
 
 END)
 
@@ -82,7 +83,7 @@ END)
   (list
     (:h1 "Goでカージオイド曲線描いてみた")
     (:p
-      "最近媒介変数曲線描くのにはまってしまったのだが，今日はアストロイド描いて見ました．
+      "最近媒介変数曲線描くのにはまってしまったのだが，今日はカージオイド描いてみました．
       今までの記事はこちら．"
       (:ul
         (:li (:a ((href (to-absolute "articles/2016/1028.html"))) "Goでリサージュ曲線書いてみた"))
