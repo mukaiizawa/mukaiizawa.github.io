@@ -10,6 +10,13 @@ body {
 }
 
 /* }}} */
+/* s {{{ */
+
+s {
+  color: #f86060;
+}
+
+/* }}} */
 /* img {{{ */
 
 img {
@@ -91,10 +98,11 @@ code .Structure {
   color: #cc7833;
 }
 
+code .Error,
+code .Todo,
 code .Exception {
   color: #f86060;
 }
-
 
 code .Underlined {
   color: #0000cc;
@@ -103,12 +111,6 @@ code .Underlined {
 
 code .Ignore {
   color: #ff0000;
-}
-
-code .Error,
-code .Todo {
-  color: #66d9ef;
-  background-color: #202020;
 }
 
 code .Folded {

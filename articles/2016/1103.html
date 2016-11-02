@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><link href="https://mukaiizawa.github.io/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/><link href="https://mukaiizawa.github.io/resources/css/style.css" rel="stylesheet"/><title>Goでカージオイド曲線描いてみた</title></head><body><div class="wrapper"><header><h1><a href="https://mukaiizawa.github.io/index.html">GoTo Great</a><p>偉大なエンジニアを目指して</p></h1></header><div class="inline"><div class="contents"><article><header><span class="fa fa-clock-o"></span><time datetime="2016-11-03">2016-11-03</time><span class="fa fa-tag">Go</span></header><h1>Goでカージオイド曲線描いてみた</h1><p>最近媒介変数曲線描くのにはまってしまったのだが，今日はアストロイド描いて見ました．
+      今までの記事はこちら．<ul><li><a href="https://mukaiizawa.github.io/articles/2016/1028.html">Goでリサージュ曲線書いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1031.html">Goでサイクロイド曲線書いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1102.html">Goでアストロイド曲線書いてみた</a></li></ul>最近媒介変数曲線ばっかり書いていてGo的には何も成長していない．当初の目的からだいぶ外れちゃった気がするけど，
+       かなり楽しめているからいいか．でもそろそろ文法も勉強しなきゃだな．</p><h2>ソースコード</h2><p>今回は外側の円の棒も描いてみました．これで軌跡が追いやすくなりましたとさ．
+      相変わらず，座標変換には苦戦しています．</p>
+<pre><code>
+package main
+
+import (
+  &quot;image&quot;
+  &quot;image/color&quot;
+  &quot;image/gif&quot;
+  &quot;math&quot;
+  &quot;os&quot;
+)
+
+// x = 2r(1+cos(t))cos(t)
+// y = 2r(1+cos(t))sin(t)
+
+var palette = []color.Color{color.Black, color.RGBA{0x0, 0xff, 0x0, 0xff}, color.RGBA{0xff, 0x00, 0x0, 0xff}}
+
+const (
+  BLACK = 0
+  GREEN = 1
+  RED = 2
+  r = 40
+)
+
+func cardioid() {
+  anim := gif.GIF{}
+  for t := 0.0; t < 2*math.pi; t + 0.02 {
+ rect : image.rect(0, 0, 6*r, 6*r)
+ img : image.newpaletted(rect, palette)
+ for ds : 0; ds < 6*r; ds++ {
+/> coordinate axes
+      img.SetColorIndex(3*r, ds, GREEN)
+      img.SetColorIndex(ds, 3*r, GREEN)
+    }
+    for dθ := 0.0; dθ <= 2*math.pi; dθ + 0.001 {
+/> center circle
+      x1 := r * math.Cos(dθ)
+      y1 := r * math.Sin(dθ)
+      img.SetColorIndex(3*r+int(x1), 3*r+int(y1), GREEN)
+      // outer circle 
+      x2 := 2*r*math.Cos(t) + r*math.Cos(dθ)
+      y2 := 2*r*math.Sin(t) + r*math.Sin(dθ)
+      img.SetColorIndex(3*r+int(x2), 3*r+int(y2), GREEN)
+    }
+    for ds := 0.0; ds <= r; ds + 1.0 {
+/> cardioid axes
+      x := ds*math.Cos(2*t) + 2*r*math.Cos(t)
+      y := ds*math.Sin(2*t) + 2*r*math.Sin(t)
+      img.SetColorIndex(3*r+int(x), 3*r+int(y), RED)
+    }
+    for dt := 0.0; dt <= t; dt + 0.001{
+/> trajectory
+      x := 2 * r * (1 + math.Cos(dt)) * math.Cos(dt)
+      y := 2 * r * (1 + math.Cos(dt)) * math.Sin(dt)
+      img.SetColorIndex(2*r+int(x), 3*r+int(y), RED)
+    }
+    anim.Delay = append(anim.Delay, 6)
+    anim.Image = append(anim.Image, img)
+  }
+  gif.EncodeAll(os.Stdout, &amp;anim)
+}
+
+func main() {
+  cardioid()
+}
+</code></pre><img src="https://mukaiizawa.github.io/resources/images/2016/1103_01.gif" alt="カージオイド曲線" width="200" height="200"/><p>かれこれ５年前になるけども，
+      大学１年の年賀状にカージオイド描いてくれた<s>変態</s>友人がいたなと．
+      カージオイド曲線和む．</p></article></div><div class="sidemenu"><aside class="profile"><h1>プロフィール</h1><a href="https://mukaiizawa.github.io/profile.html"><img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/></a><ul><li><a href="#"><span class="fa fa-male">mukaiizawa</span></a></li><li><a href="https://github.com/mukaiizawa" target="_blank"><span class="fa fa-github">github</span></a></li><li><a href="mailto:mukaiizawa@yahoo.co.jp"><span class="fa fa-envelope-o">mukaiizawa@yahoo.co.jp</span></a></li></ul></aside><aside><h1>最新記事</h1><ul><li><a href="https://mukaiizawa.github.io/articles/2016/1103.html">Goでカージオイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1102.html">Goでアストロイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1031.html">Goでサイクロイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1028.html">Goでリサージュ曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0822.html">cssで段組を実装してみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0819.html">Linux MintでVimをビルドしてみた</a></li></ul></aside></div></div><footer><p>Copyright &copy; mukaiizawa</p></footer></div><script src="https://mukaiizawa.github.io/resources/scripts/jquery.js"></script><script src="https://mukaiizawa.github.io/resources/scripts/common.js"></script></body></html>

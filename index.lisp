@@ -13,6 +13,10 @@
           (:div ((class "inline"))
             (:div ((class "contents"))
               (:article
+                (default-article-header "2016-11-03" '("Go"))
+                (:a ((href (to-absolute "articles/2016/1103.html")))
+                  (:h1 "Goでカージオイド曲線描いてみた")))
+              (:article
                 (default-article-header "2016-11-02" '("Go"))
                 (:a ((href (to-absolute "articles/2016/1102.html")))
                   (:h1 "Goでアストロイド曲線描いてみた")))
