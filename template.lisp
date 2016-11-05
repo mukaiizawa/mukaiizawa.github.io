@@ -73,7 +73,7 @@
      (:a ((href (to-absolute "profile.html")))
        (:img ((src (resource-path "images/profile_picture.png")) (alt "photo of mukaiizawa") (width "80px") (height "80px;"))))
      (:ul
-       (:li (:a ((href "#")) (:span ((class "fa fa-male")) "mukaiizawa")))
+       (:li (:a ((href (to-absolute "profile.html"))) (:span ((class "fa fa-male")) "mukaiizawa")))
        (:li (:a ((href "https://github.com/mukaiizawa") (target "_blank")) (:span ((class "fa fa-github")) "github")))
        (:li (:a ((href "mailto:mukaiizawa@yahoo.co.jp")) (:span ((class "fa fa-envelope-o")) "mukaiizawa@yahoo.co.jp"))))))
 
