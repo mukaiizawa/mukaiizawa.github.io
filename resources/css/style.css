@@ -36,7 +36,7 @@ pre {
 }
 
 pre > code {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   display: block;
   overflow-x: scroll;
 }
