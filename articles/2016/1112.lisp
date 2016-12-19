@@ -11,7 +11,7 @@
 <span class="Comment">&quot; add accessor</span>
 <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">buffer</span><span class="Delimiter">&gt;</span> sa ^t mawv;&quot;ty;wve&quot;nyG{o
 <span class="Special">      \\\\</span> public &lt;C-r&gt;t get&lt;C-r&gt;n&lt;ESC&gt;,3l~A() {&lt;CR&gt;
-<span class="Special">      \\\\</span>   <span class="Statement">return</span> <span class="Delimiter">&lt;</span><span class="Special">C-r</span><span class="Delimiter">&gt;</span>n;<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span class="Special">      \\\\</span>   <span class="Statement">return</span> this<span class="Statement">.</span><span class="Delimiter">&lt;</span><span class="Special">C-r</span><span class="Delimiter">&gt;</span>n;<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
 <span class="Special">      \\\\</span> }<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;&lt;</span><span class="Special">Esc</span><span class="Delimiter">&gt;</span><span class="Delimiter">{</span><span class="Statement">=</span>ap<span class="Delimiter">}</span><span class="Identifier">o</span>
 <span class="Special">      \\\\</span> public void <span class="Statement">set</span><span class="PreProc">&lt;</span>C-r&gt;n<span class="PreProc">&lt;</span>Esc&gt;,3l~A(<span class="PreProc">&lt;</span>C-r&gt;t <span class="PreProc">&lt;</span>C-r&gt;n) {<span class="Special">&lt;CR&gt;</span>
 <span class="Special">      \\\\</span>   this<span class="Statement">.</span><span class="Delimiter">&lt;</span><span class="Special">C-r</span><span class="Delimiter">&gt;</span>n <span class="Statement">=</span> <span class="Delimiter">&lt;</span><span class="Special">C-r</span><span class="Delimiter">&gt;</span>n;<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
@@ -145,11 +145,12 @@ END
       最後に編集開始位置にもどって終了です．")
     (:h2 "注意事項")
     (:p
-      "こんな時はうまく行きません．"
+      "自分が使うときには特に気にならないけど，以下の点には注意してください．"
     (:ul
+      (:li "変数名が一文字のとき")
       (:li "クラスの閉じカッコ}の上の行が空行でないとき")
       (:li "既存のgetter，setterは考慮しません")
-      (:li "型名にスペースが含まれる場合(Map<String, int>的な)"))
-      "あとはだいたい満足した結果かと．")))
+      (:li "型名にスペースが含まれる場合(Map<String, int>等)"))
+      "これくらい気をつけておけば期待通りに動きます．")))
 
 
