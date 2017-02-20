@@ -18,6 +18,6 @@
                                   :if-does-not-exist :create)
                (let ((*standard-output* out))
                  (mkarticle (get-article pathname))))))
-         :directory "articles/2017"
+         :directory "articles"
          :extension 'lisp
          :recursive t)
