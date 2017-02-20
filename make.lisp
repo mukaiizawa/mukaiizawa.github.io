@@ -1,4 +1,3 @@
-
 (require :stdlib *module-stdlib*)
 (load "template")
 
@@ -19,7 +18,6 @@
                                   :if-does-not-exist :create)
                (let ((*standard-output* out))
                  (mkarticle (get-article pathname))))))
-         :directory "articles"
+         :directory "articles/2017"
          :extension 'lisp
          :recursive t)
-

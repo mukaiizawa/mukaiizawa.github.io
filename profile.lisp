@@ -1,4 +1,3 @@
-
 (require "xml-manager" *module-xml-manager*)
 (load "template")
 

@@ -1,4 +1,3 @@
-
 (require "xml-manager" *module-xml-manager*)
 (load "template")
 
@@ -12,6 +11,10 @@
           (default-page-header)
           (:div ((class "inline"))
             (:div ((class "contents"))
+              (:article
+                (default-article-header "2017-02-20" '("Common Lisp"))
+                (:a ((href (to-absolute "articles/2017/0220.html")))
+                  (:h1 "Common Lispで進捗どうですか")))
               (:article
                 (default-article-header "2016-11-12" '("vim"))
                 (:a ((href (to-absolute "articles/2016/1112.html")))
@@ -46,4 +49,3 @@
           (default-page-footer))
         (default-scripts))))
   "index.html")
-

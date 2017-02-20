@@ -1,4 +1,3 @@
-
 (require :xml-manager *module-xml-manager*)
 (provide :template)
 
@@ -84,6 +83,7 @@
   `(:aside
      (:h1 "最新記事")
      (:ul
+       (:li (:a ((href (to-absolute "articles/2017/0220.html"))) "Common Lispで進捗どうですか"))
        (:li (:a ((href (to-absolute "articles/2016/1112.html"))) "VimでJavaのgetterとsetterを作成する"))
        (:li (:a ((href (to-absolute "articles/2016/1103.html"))) "Goでカージオイド曲線描いてみた"))
        (:li (:a ((href (to-absolute "articles/2016/1102.html"))) "Goでアストロイド曲線描いてみた"))
@@ -96,7 +96,7 @@
 ;; default-page-footer {{{
 
 (defmacro default-page-footer ()
-  `(:footer (:p "Copyright © mukaiizawa")))
+  `(:footer (:p "Copyright © 2016-2017 mukaiizawa")))
 
 ;; }}}
 ;; default-scripts {{{
@@ -135,4 +135,3 @@
                  (article-sidemenu ,article)))
              (default-page-footer))
            (default-scripts))))))
-
