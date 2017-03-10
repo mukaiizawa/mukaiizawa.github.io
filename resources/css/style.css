@@ -28,21 +28,24 @@ img {
 /* pre {{{ */
 
 pre {
-  border: groove 4px #404040;
   padding: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   font-family : monospace;
+  overflow: scroll;
+}
+
+/* }}} */
+/* code {{{ */
+
+code {
+  border: groove 4px #404040;
 }
 
 pre > code {
   padding-bottom: 20px;
   display: block;
-  overflow-x: scroll;
 }
-
-/* }}} */
-/* code {{{ */
 
 code .LineNr {
   color: #808080;
