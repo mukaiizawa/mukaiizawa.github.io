@@ -1,4 +1,3 @@
-
 (require :template)
 
 ;; *source* {{{
@@ -152,5 +151,3 @@ END
       (:li "既存のgetter，setterは考慮しません")
       (:li "型名にスペースが含まれる場合(Map<String, int>等)"))
       "これくらい気をつけておけば期待通りに動きます．")))
-
-

@@ -1,4 +1,3 @@
-
 (require :template)
 
 ;; *source* {{{
@@ -84,4 +83,3 @@ END)
     (to-pre-code *source*)
     (import-img "2016/1031_01.gif" "サイクロイド曲線" "400" "200")
     (:p "サイクロイド曲線和む．")))
-

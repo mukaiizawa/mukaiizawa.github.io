@@ -1,4 +1,3 @@
-
 (require :template)
 
 (make-article
@@ -40,4 +39,3 @@
       (:a ((href "http://phiary.me/css3-box-sizing/"))
         "CSS3 の box-sizing が便利すぎる!! padding や border に依存しない width, height 指定 | phiary"))
     (:p "上記のサイトを参考にさせていただき，解決．")))
-

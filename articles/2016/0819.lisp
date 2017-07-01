@@ -1,4 +1,3 @@
-
 (require :template)
 
 ;; *source* {{{
@@ -47,5 +46,3 @@ END
       (import-img "2016/0819_02.png" "Update Managerの写真")
       (:li "一番下の`Enable source code repositories'をチェックして再起動．"))
     (:p "このあとは無事参照先の方法でbuildできました．めでたし．")))
-
-

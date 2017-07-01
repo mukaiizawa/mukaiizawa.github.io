@@ -42,6 +42,7 @@
      (:meta ((name "viewport") (content "width=device-width")))
      (:link ((href (resource-path "fonts/font-awesome-4.6.3/font-awesome.css")) (rel "stylesheet")))
      (:link ((href (resource-path "css/style.css")) (rel "stylesheet")))
+     (:link ((href (resource-path "css/code.css")) (rel "stylesheet")))
      (:title ,title)))
 
 ;; }}}

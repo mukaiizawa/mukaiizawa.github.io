@@ -1,7 +1,4 @@
-
 (require :template)
-
-;; *source* {{{
 
 (defparameter *source* '(
 #<< END
@@ -23,8 +20,6 @@ END
 END
 
 ))
-
-;; }}}
 
 (make-article
   :title "Common Lispで進捗どうですか"

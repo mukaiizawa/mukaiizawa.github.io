@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/* body {{{ */
-
 body {
   font-size: 14px;
   background-color: #303030;
@@ -9,23 +7,14 @@ body {
   font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
-/* }}} */
-/* s {{{ */
-
 s {
   color: #f86060;
 }
-
-/* }}} */
-/* img {{{ */
 
 img {
   max-height: 200px;
   max-width: 200px;
 }
-
-/* }}} */
-/* pre {{{ */
 
 pre {
   margin-top: 20px;
@@ -33,118 +22,11 @@ pre {
   font-family : monospace;
 }
 
-/* }}} */
-/* code {{{ */
-
-code {
-  display: block;
-  border: groove 4px #404040;
-  overflow: scroll;
-  padding:20px;
-}
-
-code .LineNr {
-  color: #808080;
-}
-
-code .SpecialComment,
-code .Comment {
- color: #a6f02e;
-}
-
-code .Constant,
-code .Boolean,
-code .Identifier,
-code .Type,
-code .StorageClass,
-code .Typedef,
-code .Special,
-code .SpecialChar,
-code .Tag,
-code .Delimiter,
-code .Debug {
-  color: #87ceeb;
-}
-
-code .String {
-  color: #ffaaaa;
-}
-
-code .Character {
-  color: #db7093;
-}
-
-code .Number,
-code .Float {
-  color: #fadd5a;
-}
-
-code .Function,
-code .PreProc,
-code .Include,
-code .Define,
-code .Macro,
-code .PreCondit {
- color: #77aa77;
-}
-
-code .Statement,
-code .Conditional,
-code .Repeat,
-code .Label,
-code .Operator,
-code .Keyword,
-code .Structure {
-  color: #cc7833;
-}
-
-code .Error,
-code .Todo,
-code .Exception {
-  color: #f86060;
-}
-
-code .Underlined {
-  color: #0000cc;
-  text-decoration: underline;
-}
-
-code .Ignore {
-  color: #ff0000;
-}
-
-code .Folded {
-  color: #aaaaaa;
-  background-color: #404040;
-}
-
-code .Boolean,
-code .Exception,
-code .Delimiter,
-code .Error,
-code .Todo {
-  font-weight: bold;
-}
-
-/* }}} */
-/* pre > code {{{ */
-
-pre > code {
-  display: block;
-  overflow-x: scroll;
-}
-
-/* }}} */
-/* a:visited, a:link {{{ */
-
 a:visited,
 a:link {
   color: #fadd5a;
   text-decoration: none;
 }
-
-/* }}} */
-/* .wrapper header {{{ */
 
 .wrapper header {
   margin-top: 30px;
@@ -166,23 +48,14 @@ a:link {
   font-size: 12px;
 }
 
-/* }}} */
-/* .contents header {{{ */
-
 .contents header {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
-/* }}} */
-/* .contents header time {{{ */
-
 .contents header time {
   margin-right: 15px;
 }
-
-/* }}} */
-/* .contents article {{{ */
 
 .contents article h1 {
   margin-top: 0px;
@@ -212,9 +85,6 @@ a:link {
   margin-bottom:20px;
 }
 
-/* }}} */
-/* .sidemenu aside {{{ */
-
 .sidemenu aside {
   margin-bottom: 30px;
 }
@@ -243,17 +113,12 @@ a:link {
   color: #aaaaaa;
 }
 
-/* }}} */
-/* .wrapper footer {{{ */
-
 .wrapper footer {
   margin: 0;
   color: #666666;
   font-size: 14px;
   border-top: solid 1px #dddddd;
 }
-
-/* }}} */
 
 @media (min-width: 768px) {
 
@@ -284,4 +149,3 @@ a:link {
   }
 
 }
-
