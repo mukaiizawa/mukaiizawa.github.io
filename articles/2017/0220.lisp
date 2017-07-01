@@ -25,7 +25,7 @@ END
   :title "Common Lispで進捗どうですか"
   :time "2017-02-20"
   :tags  '("Common Lisp")
-  :article
+  :contents
   (list
     (:h1 "Common Lispで進捗どうですか")
     (:p

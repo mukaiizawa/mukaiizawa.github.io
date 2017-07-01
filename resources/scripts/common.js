@@ -1,7 +1,5 @@
-
 $(function(){
   $('pre > code').on('click', function(){
-    console.log(this);
     var range = document.createRange();
     range.selectNodeContents(this);
     var selection = window.getSelection();
@@ -9,4 +7,3 @@ $(function(){
     selection.addRange(range);
   });
 });
-

@@ -78,7 +78,7 @@ END)
   :title "Goでカージオイド曲線描いてみた"
   :time "2016-11-03"
   :tags  '("Go")
-  :article
+  :contents
   (list
     (:h1 "Goでカージオイド曲線描いてみた")
     (:p

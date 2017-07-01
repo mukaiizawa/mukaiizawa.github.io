@@ -1,7 +1,5 @@
 (require :template)
 
-;; *source* {{{
-
 (defparameter *source* '(
 #<< END
 $ vim <span class="Special">--version</span> | grep clipboard
@@ -17,32 +15,32 @@ E: You must put some <span class="Statement">'</span><span class="String">source
 END
 ))
 
-;; }}}
-
 (make-article
   :title "Linux MintでVimをビルドしてみた"
   :time "2016-08-19"
   :tags  '("Linux" "Vim")
-  :article
+  :contents
   (list
     (:h1 "Linux MintでVimをビルドしてみた")
     (:p
-      "今まではWindows環境のGvim（" (link-vim-org) "が配布しているインストーラーでインストール）を使用していたんだけど，"
-      "インストールしたLinuxのVimのクリップボードが使えなかった．確認してみたら")
+      "今まではWindows環境のGvim（"
+      (:a ((href "http://www.vim.org/download.php")) "vim.org")
+      "が配布しているインストーラーでインストール）を使用していたんだけど，
+      インストールしたLinuxのVimのクリップボードが使えなかった．確認してみたら")
     (to-pre-code (pop *source*))
     (:p
       "オプションが無効でした．"
       "これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．")
+
     (:h2 "実際にビルド")
     (:p "Vimについての情報は豊富で大抵の情報はすぐに見つかるので便利．")
     (:p (:a ((href "http://vim-jp.org/docs/build_linux.html")) "Linuxでのビルド方法"))
     (:p "が，早速「１．必要なパッケージのインストール」でハマりました．")
     (to-pre-code (pop *source*))
     (:p "数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．")
-    (:ol
-      (:li "画面右下の盾のマークをクリックしてUpdate Managerを起動")
-      (import-img "2016/0819_01.png" "Update Managerの写真")
-      (:li "`Edit' -> `Software source'を起動")
-      (import-img "2016/0819_02.png" "Update Managerの写真")
-      (:li "一番下の`Enable source code repositories'をチェックして再起動．"))
+    (:p "1. 画面右下の盾のマークをクリックしてUpdate Managerを起動")
+    (import-img "2016/0819_01.png" "Update Managerの写真")
+    (:p "2. `Edit' -> `Software source'を起動")
+    (import-img "2016/0819_02.png" "Update Managerの写真")
+    (:p "3. 一番下の`Enable source code repositories'をチェックして再起動．")
     (:p "このあとは無事参照先の方法でbuildできました．めでたし．")))

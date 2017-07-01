@@ -88,7 +88,7 @@ END
   :title "VimでJavaのgetterとsetterを作成する"
   :time "2016-11-03"
   :tags  '("Vim" "Java")
-  :article
+  :contents
   (list
     (:h1 "VimでJavaのgetterとsetterを作成する")
     (:p

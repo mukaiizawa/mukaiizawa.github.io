@@ -71,7 +71,7 @@ END
   :title "Goでリサージュ曲線描いてみた"
   :time "2016-10-28"
   :tags  '("Go")
-  :article
+  :contents
   (list
     (:h1 "Goでリサージュ曲線描いてみた")
     (:p
