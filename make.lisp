@@ -25,23 +25,6 @@
        (loop for tag in (article-tags ,article)
              collect (:span ((class "fa fa-tag")) tag)))))
 
-(defmacro default-profile ()
-  `(:aside
-     (:h1 "プロフィール")
-     (:a ((href (to-absolute "profile.html")))
-       (:img ((src (resource-path "images/profile_picture.png"))
-              (alt "photo of mukaiizawa")
-              (width "80px")
-              (height "80px;"))))
-     (:ul
-       (:li (:a ((href (to-absolute "profile.html")))
-              (:span ((class "fa fa-male")) "mukaiizawa")))
-       (:li (:a ((href "https://github.com/mukaiizawa")
-                 (target "_blank"))
-              (:span ((class "fa fa-github")) "github")))
-       (:li (:a ((href "mailto:mukaiizawa@yahoo.co.jp"))
-              (:span ((class "fa fa-envelope-o")) "mukaiizawa@yahoo.co.jp"))))))
-
 (defmacro default-scripts ()
   `(list
      (:script ((src (resource-path "scripts/jquery.js"))))
@@ -68,14 +51,30 @@
              :recursive t)
     articles))
 
-(defparameter *sidemenu-link*
-  (:aside
-    (:h1 "最新記事")
-    (:ul
-      (loop for article in *articles*
-            collect
-            (:li (:a ((href (to-absolute (article-path article))))
-                   (article-title article)))))))
+(defparameter *sidemenu*
+  (list
+    (:aside
+      (:h1 "プロフィール")
+      (:a ((href (to-absolute "profile.html")))
+        (:img ((src (resource-path "images/profile_picture.png"))
+               (alt "photo of mukaiizawa")
+               (width "80px")
+               (height "80px;"))))
+      (:ul
+        (:li (:a ((href (to-absolute "profile.html")))
+               (:span ((class "fa fa-male")) "mukaiizawa")))
+        (:li (:a ((href "https://github.com/mukaiizawa")
+                  (target "_blank"))
+               (:span ((class "fa fa-github")) "github")))
+        (:li (:a ((href "mailto:mukaiizawa@yahoo.co.jp"))
+               (:span ((class "fa fa-envelope-o")) "mukaiizawa@yahoo.co.jp")))))
+    (:aside
+      (:h1 "最新記事")
+      (:ul
+        (loop for article in *articles*
+              collect
+              (:li (:a ((href (to-absolute (article-path article))))
+                     (article-title article))))))))
 
 (defun make-index-page ()
   (make-article
@@ -121,9 +120,7 @@
                  (:article
                    (article-header ,article)
                    (article-contents ,article)))
-               (:div ((id "sidemenu"))
-                 (default-profile)
-                 *sidemenu-link*))
+               (:div ((id "sidemenu")) *sidemenu*))
              (site-footer))
            (default-scripts))))))
 
