@@ -18,11 +18,12 @@
        (:p "偉大なエンジニアを目指して"))))
 
 (defmacro article-header (article)
-  `(:header ((class "article-header"))
-     (:span ((class "fa fa-clock-o")))
-     (:time ((datetime (article-time ,article))) (article-time ,article))
-     (loop for tag in (article-tags ,article)
-           collect (:span ((class "fa fa-tag")) tag))))
+  `(when (article-time ,article)
+     (:header ((class "article-header"))
+       (:span ((class "fa fa-clock-o")))
+       (:time ((datetime (article-time ,article))) (article-time ,article))
+       (loop for tag in (article-tags ,article)
+             collect (:span ((class "fa fa-tag")) tag)))))
 
 (defmacro default-profile ()
   `(:aside
@@ -77,52 +78,34 @@
                    (article-title article)))))))
 
 (defun make-index-page ()
-  (write-to!
-    (DSL->xml
-      (:!DOCTYPE "html")
-      (:html ((lang "ja"))
-        (:head (default-head "プロフィール"))
-        (:body
-          (:div ((id "wrapper"))
-            (site-banner)
-            (:div ((class "line"))
-              (:div ((id "contents"))
-                (loop for article in *articles*
-                      collect
-                      (:article
-                        (article-header article)
-                        (:a ((href (to-absolute (article-path article))))
-                          (:h1 (article-title article))))))
-              (:div ((id "sidemenu"))
-                (default-profile)
-                *sidemenu-link*))
-            (site-footer))
-          (default-scripts))))
-    "index.html"))
+  (make-article
+    :title "記事一覧"
+    :time nil
+    :tags nil
+    :path (make-pathname :directory '(:relative) :name "index" :type "html")
+    :contents
+    (list
+      (loop for article in *articles*
+            collect
+            (:article
+              (article-header article)
+              (:a ((href (to-absolute (article-path article))))
+                (:h1 (article-title article))))))))
+
 
 (defun make-profile-page ()
-  (write-to!
-    (DSL->xml
-      (:!DOCTYPE "html")
-      (:html ((lang "ja"))
-        (:head (default-head "プロフィール"))
-        (:body
-          (:div ((id "wrapper"))
-            (site-banner)
-            (:div ((class "line"))
-              (:div ((id "contents"))
-                (:article
-                  (:h1 "プロフィール")
-                  (:p
-                    "Common LispとVimが好きです．
-                    このブログも実はLispで生成しています．
-                    ですがEmacsは使えません．生粋のVimmerです．")))
-                    (:div ((id "sidemenu"))
-                      (default-profile)
-                      *sidemenu-link*))
-                    (site-footer))
-                  (default-scripts))))
-            "profile.html"))
+  (make-article
+    :title "プロフィール"
+    :time nil
+    :tags nil
+    :path (make-pathname :directory '(:relative) :name "profile" :type "html")
+    :contents
+    (list
+      (:h1 "プロフィール")
+      (:p
+        "Common LispとVimが好きです．
+        このブログも実はLispで生成しています．
+        ですがEmacsは使えません．生粋のVimmerです．"))))
 
 (defmacro mkarticle (article)
   `(princ
@@ -145,7 +128,7 @@
            (default-scripts))))))
 
 (defun make-articles ()
-  (dolist (article *articles*)
+  (dolist (article (list* (make-index-page) (make-profile-page) *articles*))
     (print (article-path article))
     (let ((pathname-html (make-pathname
                            :type "html"
@@ -157,6 +140,4 @@
         (let ((*standard-output* out))
           (mkarticle article))))))
 
-(make-index-page)
-(make-profile-page)
 (make-articles)
