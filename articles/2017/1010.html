@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><link href="https://mukaiizawa.github.io/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/><link href="https://mukaiizawa.github.io/resources/css/style.css" rel="stylesheet"/><link href="https://mukaiizawa.github.io/resources/css/code.css" rel="stylesheet"/><title>Common Lispでモンティーホール問題のシミュレーション</title></head><body><div id="wrapper"><header><h1><a href="https://mukaiizawa.github.io/index.html">GoTo Great</a><p>偉大なエンジニアを目指して</p></h1></header><div class="line"><div id="contents"><article><header class="article-header"><span class="fa fa-clock-o"></span><time datetime="2017-10-10">2017-10-10</time><span class="fa fa-tag">Common Lisp</span></header><h1>Common Lispでモンティーホール問題のシミュレーション</h1><p>暇つぶしにモンティーホール問題をCommon Lispでシミュレーションする機会があり、
+      綺麗に書くことができたので記事にしようと思い立ちました。</p><h1>モンティーホール問題とは</h1><p><a href="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C">ウィキペディア</a>より<blockquote cite="https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C">
+        「プレーヤーの前に閉まった3つのドアがあって、1つのドアの後ろには景品の新車が、
+        2つのドアの後ろには、はずれを意味するヤギがいる。
+        プレーヤーは新車のドアを当てると新車がもらえる。
+        プレーヤーが1つのドアを選択した後、
+        司会のモンティが残りのドアのうちヤギがいるドアを開けてヤギを見せる。
+        ここでプレーヤーは、最初に選んだドアを、残っている開けられていないドアに変更してもよいと言われる。
+        プレーヤーはドアを変更すべきだろうか？」
+        </blockquote>
+      私も他の人が考えるであろう選択肢を変えようが変えまいが、
+      当たる確率は1/2だと思っていたのでとりあえずシミュレーションすることにしました。
+      </p><h1>シミュレーション</h1><p>まずはソースコードを載せます。</p>
+<pre><code><span class="Delimiter">(</span><span class="Statement">defparameter</span> <span class="Type">*test-times*</span> <span class="Number">100000</span><span class="Delimiter">)</span>
+
+<span class="Delimiter">(</span><span class="Statement">defun</span> do-game <span class="Delimiter">(</span>change-choice?<span class="Delimiter">)</span>
+  <span class="Delimiter">(</span><span class="Statement">let*</span> <span class="Delimiter">((</span>monty-choice <span class="Delimiter">(</span><span class="Statement">random</span> <span class="Number">3</span><span class="Delimiter">))</span>
+         <span class="Delimiter">(</span>user-choice <span class="Delimiter">(</span><span class="Statement">random</span> <span class="Number">3</span><span class="Delimiter">))</span>
+         <span class="Delimiter">(</span>openable <span class="Delimiter">(</span><span class="Statement">remove-if</span> <span class="Delimiter">(</span><span class="Statement">lambda</span> <span class="Delimiter">(</span>x<span class="Delimiter">)</span>
+                                <span class="Delimiter">(</span><span class="Statement">or</span> <span class="Delimiter">(</span><span class="Statement">=</span> x monty-choice<span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Statement">=</span> x user-choice<span class="Delimiter">)))</span>
+                              <span class="Delimiter">(</span><span class="Statement">loop</span> <span class="Statement">for</span> i from <span class="Number">0</span> to <span class="Number">2</span> collect i<span class="Delimiter">))))</span>
+    <span class="Delimiter">(</span><span class="Statement">when</span> change-choice?
+      <span class="Delimiter">(</span><span class="Statement">let</span> <span class="Delimiter">((</span>open-choice <span class="Delimiter">(</span><span class="Statement">nth</span> <span class="Delimiter">(</span><span class="Statement">random</span> <span class="Delimiter">(</span><span class="Statement">length</span> openable<span class="Delimiter">))</span> openable<span class="Delimiter">)))</span>
+        <span class="Delimiter">(</span><span class="Statement">setf</span> user-choice <span class="Delimiter">(</span><span class="Statement">-</span> <span class="Delimiter">(</span><span class="Statement">+</span> <span class="Number">0</span> <span class="Number">1</span> <span class="Number">2</span><span class="Delimiter">)</span> user-choice open-choice<span class="Delimiter">))))</span>
+    <span class="Delimiter">(</span><span class="Statement">=</span> monty-choice user-choice<span class="Delimiter">)))</span>
+
+<span class="Delimiter">(</span><span class="Statement">defun</span> monty-hole-problem <span class="Delimiter">()</span>
+  <span class="Delimiter">(</span><span class="Statement">let</span> <span class="Delimiter">((</span>win-count-change <span class="Number">0</span><span class="Delimiter">)</span>
+        <span class="Delimiter">(</span>win-count-not-change <span class="Number">0</span><span class="Delimiter">))</span>
+    <span class="Delimiter">(</span><span class="Statement">dotimes</span> <span class="Delimiter">(</span>i <span class="Type">*test-times*</span><span class="Delimiter">)</span>
+      <span class="Delimiter">(</span><span class="Statement">if</span> <span class="Delimiter">(</span>do-game <span class="Statement">t</span><span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Statement">incf</span> win-count-change<span class="Delimiter">))</span>
+      <span class="Delimiter">(</span><span class="Statement">if</span> <span class="Delimiter">(</span>do-game <span class="Statement">nil</span><span class="Delimiter">)</span> <span class="Delimiter">(</span><span class="Statement">incf</span> win-count-not-change<span class="Delimiter">)))</span>
+    <span class="Delimiter">(</span><span class="Statement">format</span> <span class="Statement">t</span> <span class="String">&quot;change: ~A~%fix: ~A&quot;</span>
+            <span class="Delimiter">(</span><span class="Statement">/</span> win-count-change <span class="Number">1.0</span> <span class="Type">*test-times*</span><span class="Delimiter">)</span>
+            <span class="Delimiter">(</span><span class="Statement">/</span> win-count-not-change <span class="Number">1.0</span> <span class="Type">*test-times*</span><span class="Delimiter">))))</span></code></pre><p>
+      do-gameは一回ゲームを試行する関数です。
+      ゲームをする際にモンティーがドアを開けた後に選択を変更する否かを決める引数を一つ受け取ります。
+      この関数はユーザが勝ったか(モンティと選択が一致したか)否かを返します。
+      ユーザとモンティの選択はそれぞれ0から2の数字で表現されています。
+      ユーザが選択を変更する場合、モンティーが開けなかったドアを選択します。
+      その後、ユーザとモンティが一致しているか判定した結果を返します。
+      </p><p>
+      monty-hole-problemはグローバル変数*test-times*に代入されている回数だけdo-gameを試行し、
+      ユーザが選択を固定した場合とそうでない場合の勝率を集計して結果を表示します。
+      本当は、選択を固定する場合とそうでない場合で、
+      do-gameを実行する乱数のシードは同じにすべきですが、
+      試行回数が十分に多ければ統計として確からしいこととしました。
+      </p><h1>実行結果</h1><p>関数を呼び出します。</p>
+<pre><code><span class="Delimiter">(</span>monty-hole-problem<span class="Delimiter">)</span></code></pre><p>実行結果はこうなりました。</p>
+<pre><code>change: 0.66668
+fix: 0.33603</code></pre><p>このように、選択を常に変更する場合は2/3の確率となり、常に変更しない場合は1/3となります。</p><h1>考察</h1><p>モンティがドアを開けた後から来た人からすると、
+      確かにこのゲームの勝率はどのようにユーザが振る舞っても1/2になると思います。<q>つまり、残る２つのドアのうちどちらかに当たりがあります。</q>という状況。</p><p>
+        この問題が面白いのは、最初からゲームに参加していた人には、
+        ドアを開ける前にユーザが選んでいた選択が当たりの確立は1/3で、
+        その他の2つのドアに当たりがある確率が2/3であることがわかるということです。
+        この単純な仕組みに気づければ、残りの２つの選択肢のうちモンティが勝手に候補を減らしてくれるので残りの一枚を選択すると2/3の確率で当たるわけです。
+        説明されると納得できるものですが、最初からこの事実に気づくのは難しいですね。
+        </p></article></div><div id="sidemenu"><aside><h1>プロフィール</h1><a href="https://mukaiizawa.github.io/profile.html"><img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/></a><ul><li><a href="https://mukaiizawa.github.io/profile.html"><span class="fa fa-male">mukaiizawa</span></a></li><li><a href="https://github.com/mukaiizawa" target="_blank"><span class="fa fa-github">github</span></a></li><li><a href="mailto:mukaiizawa@yahoo.co.jp"><span class="fa fa-envelope-o">mukaiizawa@yahoo.co.jp</span></a></li></ul></aside><aside><h1>最新記事</h1><ul><li><a href="https://mukaiizawa.github.io/articles/2017/1010.html">Common Lispでモンティーホール問題のシミュレーション</a></li><li><a href="https://mukaiizawa.github.io/articles/2017/0701.html">ボードゲーム「カタンの開拓者」のおすすめローカルルール</a></li><li><a href="https://mukaiizawa.github.io/articles/2017/0220.html">Common Lispで進捗どうですか</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1112.html">VimでJavaのgetterとsetterを作成する</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1103.html">Goでカージオイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1102.html">Goでアストロイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1031.html">Goでサイクロイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1028.html">Goでリサージュ曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0822.html">cssで段組を実装してみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0819.html">Linux MintでVimをビルドしてみた</a></li></ul></aside></div></div><footer><p>Copyright &copy; 2016-2017 mukaiizawa</p></footer></div><script src="https://mukaiizawa.github.io/resources/scripts/jquery.js"></script><script src="https://mukaiizawa.github.io/resources/scripts/common.js"></script></body></html>
