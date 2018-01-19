@@ -31,7 +31,7 @@
      (:script ((src (resource-path "scripts/common.js"))))))
 
 (defmacro site-footer ()
-  `(:footer (:p "Copyright © 2016-2017 mukaiizawa")))
+  `(:footer (:p "Copyright © 2016-2018 mukaiizawa")))
 
 (defparameter *articles*
   (let ((articles nil))
