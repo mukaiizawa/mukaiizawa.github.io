@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><link href="https://mukaiizawa.github.io/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/><link href="https://mukaiizawa.github.io/resources/css/style.css" rel="stylesheet"/><link href="https://mukaiizawa.github.io/resources/css/code.css" rel="stylesheet"/><title>Goでリサージュ曲線描いてみた</title></head><body><div id="wrapper"><header><h1><a href="https://mukaiizawa.github.io/index.html">GoTo Great</a><p>偉大なエンジニアを目指して</p></h1></header><div class="line"><div id="contents"><article><header class="article-header"><span class="fa fa-clock-o"></span><time datetime="2016-10-28">2016-10-28</time><span class="fa fa-tag">Go</span></header><h1>Goでリサージュ曲線描いてみた</h1><p>最近Goの勉強をはじめてみました．
-      いままでLispしか真面目に勉強した言語がないのでいろいろ戸惑っています．
-      プログラミング言語Go (ADDISON-WESLEY PROFESSIONAL COMPUTING SERIES COMPUTING SERIES)
-      Alan A.A. Donovan (著), Brian W. Kernighan (著), 柴田 芳樹 (翻訳)を読んで勉強してます．</p><p>チュートリアルまでしか読んでないけど良書の予感．今日はその中でリサージュ曲線描くプログラムがあったのでそれを改造したものを紹介します．</p><h2>ソースコード</h2><p>説明するよりも出来上がったGIFとソースコードを見ていただいたほうが早いので掲載します．</p>
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><link href="C:/Users/lambda/blog/resources/fonts/font-awesome-4.6.3/font-awesome.css" rel="stylesheet"/><link href="C:/Users/lambda/blog/resources/css/style.css" rel="stylesheet"/><link href="C:/Users/lambda/blog/resources/css/code.css" rel="stylesheet"/><title>Go言語で媒介変数表示された曲線の描画</title></head><body><div id="wrapper"><header id="title"><h1><a href="C:/Users/lambda/blog/index.html">GoTo Great</a></h1><p>偉大なエンジニアを目指して</p></header><div class="line"><div id="contents"><article><header><span class="fa fa-clock-o"></span><time datetime="2016-10-28">2016-10-28</time><span class="fa fa-tag"></span><span>Go</span><h1>Go言語で媒介変数表示された曲線の描画</h1></header><section><h1>経緯</h1><p>最近Goの勉強をはじめてみた。とりあえず、プログラミング言語Go (ADDISON-WESLEY PROFESSIONAL COMPUTING SERIES COMPUTING SERIES)Alan A.A. Donovan (著), Brian W. Kernighan (著), 柴田 芳樹 (翻訳)を読んでいる。</p><p>例題にリサージュ曲線の描画があったから、触発されていろんな媒介変数表示された曲線を描いてみた。</p><h1>リサージュ曲線</h1><p>例題から、好きなリサージュ曲線を描けるようにコマンドライン引数を受け取るように修正。
 <pre><code>
 <span class="Statement">package</span> main
 
@@ -58,6 +55,191 @@
   }
   lissajous(a, b)
 }
+</code></pre>a=1, b=1<img src="C:/Users/lambda/blog/resources/images/2016/1028_01.gif" alt="リサージュ曲線1" width="200" height="200"/><br/>a=1, b=2<img src="C:/Users/lambda/blog/resources/images/2016/1028_02.gif" alt="リサージュ曲線2" width="200" height="200"/><br/>a=3, b=4<img src="C:/Users/lambda/blog/resources/images/2016/1028_03.gif" alt="リサージュ曲線3" width="200" height="200"/></p><h1>サイクロイド曲線</h1><p>最速降下曲線。
+<pre><code>
+<span class="Statement">package</span> main
 
-</code></pre><p>原本はランダムでリサージュ図形が作成される実装になっていたけども，
-      好きなリサージュ曲線を描けるようにコマンドライン引数を使えるようにしました．</p><img src="https://mukaiizawa.github.io/resources/images/2016/1028_01.gif" alt="リサージュ曲線1" width="200" height="200"/><p>a=1, b=1</p><img src="https://mukaiizawa.github.io/resources/images/2016/1028_02.gif" alt="リサージュ曲線2" width="200" height="200"/><p>a=1, b=2</p><img src="https://mukaiizawa.github.io/resources/images/2016/1028_03.gif" alt="リサージュ曲線3" width="200" height="200"/><p>a=3, b=4</p><p>リサージュ曲線和む．</p></article></div><div id="sidemenu"><aside><h1>プロフィール</h1><a href="https://mukaiizawa.github.io/profile.html"><img src="https://mukaiizawa.github.io/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/></a><ul><li><a href="https://mukaiizawa.github.io/profile.html"><span class="fa fa-male">mukaiizawa</span></a></li><li><a href="https://github.com/mukaiizawa" target="_blank"><span class="fa fa-github">github</span></a></li><li><a href="mailto:mukaiizawa@yahoo.co.jp"><span class="fa fa-envelope-o">mukaiizawa@yahoo.co.jp</span></a></li></ul></aside><aside><h1>最新記事</h1><ul><li><a href="https://mukaiizawa.github.io/articles/2018/0120.html">Common Lispで「(a ==1 &amp;&amp; a== 2 &amp;&amp; a==3)」の結果を真にする</a></li><li><a href="https://mukaiizawa.github.io/articles/2017/1010.html">Common Lispでモンティーホール問題のシミュレーション</a></li><li><a href="https://mukaiizawa.github.io/articles/2017/0701.html">ボードゲーム「カタンの開拓者」のおすすめローカルルール</a></li><li><a href="https://mukaiizawa.github.io/articles/2017/0220.html">Common Lispで進捗どうですか</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1112.html">VimでJavaのgetterとsetterを作成する</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1103.html">Goでカージオイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1102.html">Goでアストロイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1031.html">Goでサイクロイド曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/1028.html">Goでリサージュ曲線描いてみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0822.html">cssで段組を実装してみた</a></li><li><a href="https://mukaiizawa.github.io/articles/2016/0819.html">Linux MintでVimをビルドしてみた</a></li></ul></aside></div></div><footer><p>Copyright &copy; 2016-2018 mukaiizawa</p></footer></div><script src="https://mukaiizawa.github.io/resources/scripts/jquery.js"></script><script src="https://mukaiizawa.github.io/resources/scripts/common.js"></script></body></html>
+<span class="Statement">import</span> (
+  <span class="String">&quot;image&quot;</span>
+  <span class="String">&quot;image/color&quot;</span>
+  <span class="String">&quot;image/gif&quot;</span>
+  <span class="String">&quot;os&quot;</span>
+  <span class="String">&quot;math&quot;</span>
+)
+
+<span class="Comment">// x = r(t - sin(t))</span>
+<span class="Comment">// y = r(1 - cos(t))</span>
+
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}, color.RGBA{<span class="Number">0xff</span>, <span class="Number">0x00</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+
+<span class="Statement">const</span> (
+  BLACK = <span class="Number">0</span>
+  GREEN = <span class="Number">1</span>
+  RED = <span class="Number">2</span>
+  r = <span class="Number">50</span>
+  Δ = <span class="float">0.0001</span>
+)
+
+<span class="Statement">func</span> cycloid() {
+  anim := gif.GIF{}
+  <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">4</span>*math.Pi; t += <span class="float">0.1</span> {
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">14</span>*r, <span class="Number">4</span>*r)
+    img := image.NewPaletted(rect, palette)
+    <span class="Comment">// circle</span>
+    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt; <span class="Number">2</span>*math.Pi; dθ += Δ {
+      x := r*math.Cos(dθ) + r*t
+      y := r*math.Sin(dθ) + r
+      img.SetColorIndex(<span class="Type">int</span>(x), <span class="Type">int</span>(y), GREEN)
+    }
+    <span class="Comment">// circle axes</span>
+    <span class="Statement">for</span> ds := <span class="float">0.0</span>; ds &lt;= r; ds += <span class="float">1.0</span> {
+      x := -ds*math.Cos(t-math.Pi/<span class="Number">2</span>) + r*t
+      y := ds*math.Sin(t-math.Pi/<span class="Number">2</span>) + r
+      img.SetColorIndex(<span class="Type">int</span>(x), <span class="Type">int</span>(y), RED)
+    }
+    <span class="Comment">// trajectory</span>
+    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt; t; dt += Δ {
+      dx := r*(dt - math.Sin(dt))
+      dy := r*(<span class="Number">1</span> - math.Cos(dt))
+      img.SetColorIndex(<span class="Type">int</span>(dx), <span class="Type">int</span>(dy), RED)
+    }
+    anim.Delay = <span class="Statement">append</span>(anim.Delay, <span class="Number">8</span>)
+    anim.Image = <span class="Statement">append</span>(anim.Image, img)
+  }
+  gif.EncodeAll(os.Stdout, &amp;anim)
+}
+
+<span class="Statement">func</span> main() {
+  cycloid()
+}
+</code></pre><img src="C:/Users/lambda/blog/resources/images/2016/1028_04.gif" alt="サイクロイド曲線" width="200" height="200"/></p><h1>アステロイド曲線</h1><p>座標系の取り方があれなので、若干ソースが。
+<pre><code>
+<span class="Statement">package</span> main
+
+<span class="Statement">import</span> (
+  <span class="String">&quot;image&quot;</span>
+  <span class="String">&quot;image/color&quot;</span>
+  <span class="String">&quot;image/gif&quot;</span>
+  <span class="String">&quot;math&quot;</span>
+  <span class="String">&quot;os&quot;</span>
+)
+
+<span class="Comment">// x = r(cos(t))^3 = r*(3cos(t)+cos(3t))/4</span>
+<span class="Comment">// y = r(sin(t))^3 = r*(3sin(t)-sin(3t))/4</span>
+
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}, color.RGBA{<span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+
+<span class="Statement">const</span> (
+  BLACK = <span class="Number">0</span>
+  GREEN = <span class="Number">1</span>
+  RED = <span class="Number">2</span>
+  r = <span class="Number">100</span>
+)
+
+<span class="Statement">func</span> astroid() {
+  anim := gif.GIF{}
+  <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.02</span>{
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">2</span>*r, <span class="Number">2</span>*r)
+    img := image.NewPaletted(rect, palette)
+    <span class="Statement">for</span> ds := <span class="Number">0</span>; ds &lt;= <span class="Number">2</span>*r; ds++ {
+      <span class="Comment">// coordinate axes</span>
+      img.SetColorIndex(r, ds, GREEN)
+      img.SetColorIndex(ds, r, GREEN)
+    }
+    <span class="Statement">for</span> ds := <span class="float">0.0</span>; ds &lt;= r/<span class="Number">4</span>; ds += <span class="float">1.0</span> {
+      <span class="Comment">// cardioid axes</span>
+      x := ds*math.Cos(-<span class="Number">3</span>*t) + (r*<span class="Number">3</span>/<span class="Number">4</span>)*math.Cos(t)
+      y := ds*math.Sin(-<span class="Number">3</span>*t) + (r*<span class="Number">3</span>/<span class="Number">4</span>)*math.Sin(t)
+      img.SetColorIndex(r+<span class="Type">int</span>(x), r+<span class="Type">int</span>(y), RED)
+    }
+    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt;= <span class="Number">2</span>*math.Pi; dθ += <span class="float">0.001</span> {
+      <span class="Comment">// small circle </span>
+      x1 := (<span class="Number">3</span>*r/<span class="Number">4</span>)*math.Cos(t) + (r/<span class="Number">4</span>)*math.Sin(dθ)
+      y1 := (<span class="Number">3</span>*r/<span class="Number">4</span>)*math.Sin(t) + (r/<span class="Number">4</span>)*math.Cos(dθ)
+      img.SetColorIndex(r+<span class="Type">int</span>(x1), r+<span class="Type">int</span>(y1), GREEN)
+      <span class="Comment">// large circle</span>
+      x2 := r * math.Cos(dθ)
+      y2 := r * math.Sin(dθ)
+      img.SetColorIndex(r+<span class="Type">int</span>(x2), r+<span class="Type">int</span>(y2), GREEN)
+    }
+    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt;= t; dt += <span class="float">0.001</span>{
+      <span class="Comment">// trajectory</span>
+      x := r * (<span class="Number">3</span>*math.Cos(dt) + math.Cos(<span class="Number">3</span>*dt)) / <span class="Number">4</span>
+      y := r * (<span class="Number">3</span>*math.Sin(dt) - math.Sin(<span class="Number">3</span>*dt)) / <span class="Number">4</span>
+      img.SetColorIndex(r+<span class="Type">int</span>(x), r+<span class="Type">int</span>(y), RED)
+    }
+    anim.Delay = <span class="Statement">append</span>(anim.Delay, <span class="Number">6</span>)
+    anim.Image = <span class="Statement">append</span>(anim.Image, img)
+  }
+  gif.EncodeAll(os.Stdout, &amp;anim)
+}
+
+<span class="Statement">func</span> main() {
+  astroid()
+}
+</code></pre><img src="C:/Users/lambda/blog/resources/images/2016/1028_05.gif" alt="アストロイド曲線" width="200" height="200"/></p><h1>カージオイド曲線</h1><p>大学１年の年賀状にカージオイド描いてくれた<s>変態</s>友人がいたなと思い出す。
+<pre><code>
+<span class="Statement">package</span> main
+
+<span class="Statement">import</span> (
+  <span class="String">&quot;image&quot;</span>
+  <span class="String">&quot;image/color&quot;</span>
+  <span class="String">&quot;image/gif&quot;</span>
+  <span class="String">&quot;math&quot;</span>
+  <span class="String">&quot;os&quot;</span>
+)
+
+<span class="Comment">// x = 2r(1+cos(t))cos(t)</span>
+<span class="Comment">// y = 2r(1+cos(t))sin(t)</span>
+
+<span class="Statement">var</span> palette = []color.Color{color.Black, color.RGBA{<span class="Number">0x0</span>, <span class="Number">0xff</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}, color.RGBA{<span class="Number">0xff</span>, <span class="Number">0x00</span>, <span class="Number">0x0</span>, <span class="Number">0xff</span>}}
+
+<span class="Statement">const</span> (
+  BLACK = <span class="Number">0</span>
+  GREEN = <span class="Number">1</span>
+  RED = <span class="Number">2</span>
+  r = <span class="Number">40</span>
+)
+
+<span class="Statement">func</span> cardioid() {
+  anim := gif.GIF{}
+  <span class="Statement">for</span> t := <span class="float">0.0</span>; t &lt; <span class="Number">2</span>*math.Pi; t += <span class="float">0.02</span> {
+    rect := image.Rect(<span class="Number">0</span>, <span class="Number">0</span>, <span class="Number">6</span>*r, <span class="Number">6</span>*r)
+    img := image.NewPaletted(rect, palette)
+    <span class="Statement">for</span> ds := <span class="Number">0</span>; ds &lt;= <span class="Number">6</span>*r; ds++ {
+      <span class="Comment">// coordinate axes</span>
+      img.SetColorIndex(<span class="Number">3</span>*r, ds, GREEN)
+      img.SetColorIndex(ds, <span class="Number">3</span>*r, GREEN)
+    }
+    <span class="Statement">for</span> dθ := <span class="float">0.0</span>; dθ &lt;= <span class="Number">2</span>*math.Pi; dθ += <span class="float">0.001</span> {
+      <span class="Comment">// center circle</span>
+      x1 := r * math.Cos(dθ)
+      y1 := r * math.Sin(dθ)
+      img.SetColorIndex(<span class="Number">3</span>*r+<span class="Type">int</span>(x1), <span class="Number">3</span>*r+<span class="Type">int</span>(y1), GREEN)
+      <span class="Comment">// outer circle </span>
+      x2 := <span class="Number">2</span>*r*math.Cos(t) + r*math.Cos(dθ)
+      y2 := <span class="Number">2</span>*r*math.Sin(t) + r*math.Sin(dθ)
+      img.SetColorIndex(<span class="Number">3</span>*r+<span class="Type">int</span>(x2), <span class="Number">3</span>*r+<span class="Type">int</span>(y2), GREEN)
+    }
+    <span class="Statement">for</span> ds := <span class="float">0.0</span>; ds &lt;= r; ds += <span class="float">1.0</span> {
+      <span class="Comment">// cardioid axes</span>
+      x := ds*math.Cos(<span class="Number">2</span>*t) + <span class="Number">2</span>*r*math.Cos(t)
+      y := ds*math.Sin(<span class="Number">2</span>*t) + <span class="Number">2</span>*r*math.Sin(t)
+      img.SetColorIndex(<span class="Number">3</span>*r+<span class="Type">int</span>(x), <span class="Number">3</span>*r+<span class="Type">int</span>(y), RED)
+    }
+    <span class="Statement">for</span> dt := <span class="float">0.0</span>; dt &lt;= t; dt += <span class="float">0.001</span>{
+      <span class="Comment">// trajectory</span>
+      x := <span class="Number">2</span> * r * (<span class="Number">1</span> + math.Cos(dt)) * math.Cos(dt)
+      y := <span class="Number">2</span> * r * (<span class="Number">1</span> + math.Cos(dt)) * math.Sin(dt)
+      img.SetColorIndex(<span class="Number">2</span>*r+<span class="Type">int</span>(x), <span class="Number">3</span>*r+<span class="Type">int</span>(y), RED)
+    }
+    anim.Delay = <span class="Statement">append</span>(anim.Delay, <span class="Number">6</span>)
+    anim.Image = <span class="Statement">append</span>(anim.Image, img)
+  }
+  gif.EncodeAll(os.Stdout, &amp;anim)
+}
+
+<span class="Statement">func</span> main() {
+  cardioid()
+}
+</code></pre><img src="C:/Users/lambda/blog/resources/images/2016/1028_06.gif" alt="カージオイド曲線" width="200" height="200"/></p></section></article></div><div id="sidemenu"><aside><h1>プロフィール</h1><a href="C:/Users/lambda/blog/profile.html"><img src="C:/Users/lambda/blog/resources/images/profile_picture.png" alt="photo of mukaiizawa" width="80px" height="80px;"/></a><ul><li><a href="C:/Users/lambda/blog/profile.html"><span class="fa fa-male"></span>mukaiizawa</a></li><li><a href="https://github.com/mukaiizawa" target="_blank"><span class="fa fa-github"></span>github</a></li><li><a href="mailto:mukaiizawa@yahoo.co.jp"><span class="fa fa-envelope-o"></span>mukaiizawa@yahoo.co.jp</a></li></ul></aside><aside><h1>最新記事</h1><ul><li><a href="C:/Users/lambda/blog/articles/2018/1203.html">LinuxがインストールされているHDDをWindowsのHyper-Vに移行する方法</a></li><li><a href="C:/Users/lambda/blog/articles/2018/0120.html">Common Lispで「(a ==1 &amp;&amp; a== 2 &amp;&amp; a==3)」の結果を真にする</a></li><li><a href="C:/Users/lambda/blog/articles/2017/1010.html">Common Lispでモンティーホール問題のシミュレーション</a></li><li><a href="C:/Users/lambda/blog/articles/2017/0701.html">ボードゲーム「カタンの開拓者」のおすすめローカルルール</a></li><li><a href="C:/Users/lambda/blog/articles/2017/0220.html">Common Lispで進捗どうですか</a></li><li><a href="C:/Users/lambda/blog/articles/2016/1112.html">VimでJavaのgetterとsetterを作成する</a></li><li><a href="C:/Users/lambda/blog/articles/2016/1028.html">Go言語で媒介変数表示された曲線の描画</a></li><li><a href="C:/Users/lambda/blog/articles/2016/0822.html">cssで段組の実装</a></li><li><a href="C:/Users/lambda/blog/articles/2016/0819.html">Linux MintでVimをビルド</a></li></ul></aside></div></div><footer><p>Copyright &copy; 2016-2018 mukaiizawa</p></footer></div><script src="C:/Users/lambda/blog/resources/scripts/jquery.js"></script><script src="C:/Users/lambda/blog/resources/scripts/common.js"></script></body></html>

@@ -17,10 +17,8 @@ END
   :tags  '("Common Lisp")
   :contents
   (list
-    (:h1 "Common Lispで「(a ==1 && a== 2 && a==3)」の結果を真にする")
-    (:p "Stack Overflow で白熱しているということで、便乗して書いてみました。")
-    (:p "元ネタも掲載しておきます。")
-    (:a ((href "https://stackoverflow.com/questions/48270127/can-a-1-a-2-a-3-ever-evaluate-to-true"))
-      "Can (a ==1 && a== 2 && a==3) ever evaluate to true?")
-    (to-pre-code (pop *source*))
-    (:p "個人的にJavaScriptのどの解よりもエレガントかと。このプログラムの短さがLispの強力さを物語っているんだなぁ。")))
+    (:h1 "ソースコード")
+    (:p (:a ((href "https://stackoverflow.com/questions/48270127/can-a-1-a-2-a-3-ever-evaluate-to-true"))
+          "Stack Overflow")
+      "で白熱しているということで、便乗してCommon Lispで書いてみた。")
+    (to-pre-code (pop *source*))))

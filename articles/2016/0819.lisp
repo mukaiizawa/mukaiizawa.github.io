@@ -16,31 +16,24 @@ END
 ))
 
 (make-article
-  :title "Linux MintでVimをビルドしてみた"
+  :title "Linux MintでVimをビルド"
   :time "2016-08-19"
   :tags  '("Linux" "Vim")
   :contents
   (list
-    (:h1 "Linux MintでVimをビルドしてみた")
-    (:p
-      "今まではWindows環境のGvim（"
-      (:a ((href "http://www.vim.org/download.php")) "vim.org")
-      "が配布しているインストーラーでインストール）を使用していたんだけど，
-      インストールしたLinuxのVimのクリップボードが使えなかった．確認してみたら")
-    (to-pre-code (pop *source*))
-    (:p
-      "オプションが無効でした．"
-      "これはいい機会だと思ってLinux MintにVimをソースコードからビルドしてインストールしたのでメモ．")
-
-    (:h2 "実際にビルド")
-    (:p "Vimについての情報は豊富で大抵の情報はすぐに見つかるので便利．")
-    (:p (:a ((href "http://vim-jp.org/docs/build_linux.html")) "Linuxでのビルド方法"))
-    (:p "が，早速「１．必要なパッケージのインストール」でハマりました．")
-    (to-pre-code (pop *source*))
-    (:p "数時間ハマった挙句，最後の行のエラーが原因だったので以下の手順で解決．")
-    (:p "1. 画面右下の盾のマークをクリックしてUpdate Managerを起動")
-    (import-img "2016/0819_01.png" "Update Managerの写真")
-    (:p "2. `Edit' -> `Software source'を起動")
-    (import-img "2016/0819_02.png" "Update Managerの写真")
-    (:p "3. 一番下の`Enable source code repositories'をチェックして再起動．")
-    (:p "このあとは無事参照先の方法でbuildできました．めでたし．")))
+    (:h1 "経緯")
+    (:p "Linuxにデフォルトで入っているVimでクリップボードが使えなかった。"
+      "確認してみたらクリップボードが無効になってた。"
+      (to-pre-code (pop *source*)))
+    (:p "いい機会なのでVimをソースコードからビルドしてインストールしてみた。")
+    (:h1 "ビルド手順")
+    (:p (:a ((href "http://vim-jp.org/docs/build_linux.html")) "vim-jp")
+      "に親切にビルド手順が書いてあった。"
+      "手順通りに進めると「１。必要なパッケージのインストール」にて次のエラーが出た。"
+      (to-pre-code (pop *source*)))
+    (:p "数時間嵌った結果、次の手順で解消。"
+      (:ol
+        (:li "Update Managerを起動")
+        (:li "'Edit' -> 'Software source'を起動")
+        (:li "一番下の'Enable source code repositories'をチェックして再起動"))
+      "このあとは参照先の方法でビルドに成功。")))

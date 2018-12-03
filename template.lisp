@@ -1,7 +1,8 @@
 (require :xml-manager *module-xml-manager*)
 (provide :template)
 
-(defparameter *http-root-path* "https://mukaiizawa.github.io/")
+; (defparameter *http-root-path* "https://mukaiizawa.github.io/")
+(defparameter *http-root-path* "C:/Users/lambda/blog/")
 
 (defstruct article
   (title "Goto Great")

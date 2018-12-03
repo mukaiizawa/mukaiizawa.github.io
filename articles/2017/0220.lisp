@@ -27,11 +27,8 @@ END
   :tags  '("Common Lisp")
   :contents
   (list
-    (:h1 "Common Lispで進捗どうですか")
-    (:p
-      "今更感が拭えないのですが，暇つぶしにCommon Lispで進捗どうですかをつくりました．")
+    (:h1 "ソースコード")
+    (:p "暇つぶしにCommon Lispで進捗どうですかを作った。")
     (to-pre-code (pop *source*))
-    (:p
-      "念の為実行結果も．")
     (:div ((style "border:groove 4px #404040;"))
       (:p (pop *source*)))))
