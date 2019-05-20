@@ -53,8 +53,6 @@ span.fa-tag { margin-left: 0.25em; }
 /* side menu */
 #sidemenu aside { margin-top: 1em; }
 #sidemenu aside ul { margin: 0; padding: 0; list-style: none; }
-#sidemenu aside li { border-top: solid 1px #dddddd; }
-#sidemenu aside li:first-child { border: none; }
 #sidemenu aside li a {
   display: block;
   margin-top: 0.30em;
